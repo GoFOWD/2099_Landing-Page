@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1" />
+		<title>숏픽 | 숏폼 자동화 앱</title>
+		<meta
+			name="description"
+			content="1분 만에 숏폼 자동생산. 광고·콘텐츠·리뷰까지 자동화. 숏픽으로 매출은 자동상승." />
+		<meta
+			property="og:title"
+			content="숏픽 | 숏폼 자동화 앱" />
+		<meta
+			property="og:description"
+			content="아이디어만 있으면 숏폼은 앱이 알아서. 하루 10~무제한 자동 생성, 배포 스케줄링, 성과 추적." />
+		<meta
+			property="og:type"
+			content="website" />
+		<meta
+			property="og:image"
+			content="/og-shortpick.png" />
+		<meta
+			name="theme-color"
+			content="#0ea5e9" />
+		<link
+			rel="preconnect"
+			href="https://fonts.googleapis.com" />
+		<link
+			rel="preconnect"
+			href="https://fonts.gstatic.com"
+			crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+			rel="stylesheet" />
+
+		<!-- Tailwind CSS -->
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						fontFamily: {
+							sans: [
+								"Inter",
+								"Noto Sans KR",
+								"system-ui",
+								"-apple-system",
+								"Segoe UI",
+								"Roboto",
+								"sans-serif"
+							]
+						},
+						colors: {
+							brand: {
+								DEFAULT: "#0ea5e9",
+								dark: "#0284c7",
+								light: "#38bdf8"
+							}
+						},
+						boxShadow: {
+							smooth: "0 8px 30px rgba(2,132,199,0.15)"
+						}
+					}
+				}
+			};
+		</script>
+		<style>
+			html,
+			body {
+				font-family: Inter, "Noto Sans KR", ui-sans-serif, system-ui,
+					-apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial,
+					"Apple Color Emoji", "Segoe UI Emoji";
+			}
+		</style>
+		<!-- TODO: 배포 전 픽셀 삽입
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n; n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','YOUR_PIXEL_ID');fbq('track','PageView');</script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments)}; gtag('js', new Date()); gtag('config','G-XXXXXXXX');</script>
+  -->
+	</head>
+	<body class="bg-white text-gray-900">
+		<!-- Header -->
+		<header
+			class="sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/80 border-b border-gray-100">
+			<div
+				class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+				<a
+					href="#home"
+					class="flex items-center gap-2 font-extrabold text-lg tracking-tight"
+					><span
+						class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-brand text-white"
+						>S</span
+					>
+					SHORTPICK</a
+				>
+				<nav class="hidden md:flex items-center gap-8 text-sm">
+					<a
+						href="#features"
+						class="hover:text-brand"
+						>기능</a
+					>
+					<a
+						href="#how"
+						class="hover:text-brand"
+						>작동 방식</a
+					>
+					<a
+						href="#pricing"
+						class="hover:text-brand"
+						>가격</a
+					>
+					<a
+						href="#testimonials"
+						class="hover:text-brand"
+						>후기</a
+					>
+					<a
+						href="#faq"
+						class="hover:text-brand"
+						>FAQ</a
+					>
+				</nav>
+				<div class="hidden md:flex items-center gap-3">
+					<a
+						href="#download"
+						class="px-4 py-2 rounded-xl border border-gray-200 hover:border-brand/40"
+						>다운로드</a
+					>
+					<a
+						id="cta-primary-top"
+						href="#lead"
+						class="px-4 py-2 rounded-xl bg-brand text-white hover:bg-brand.dark shadow-smooth"
+						>무료로 시작</a
+					>
+				</div>
+				<button
+					id="btn-mobile"
+					class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-xl border border-gray-200">
+					☰
+				</button>
+			</div>
+			<div
+				id="mobile-nav"
+				class="md:hidden hidden border-t border-gray-100">
+				<div class="px-4 py-3 flex flex-col gap-2 text-sm">
+					<a
+						href="#features"
+						class="py-2"
+						>기능</a
+					>
+					<a
+						href="#how"
+						class="py-2"
+						>작동 방식</a
+					>
+					<a
+						href="#pricing"
+						class="py-2"
+						>가격</a
+					>
+					<a
+						href="#testimonials"
+						class="py-2"
+						>후기</a
+					>
+					<a
+						href="#faq"
+						class="py-2"
+						>FAQ</a
+					>
+					<a
+						href="#lead"
+						class="py-2 font-semibold text-brand"
+						>무료로 시작</a
+					>
+				</div>
+			</div>
+		</header>
+
+		<!-- Hero -->
+		<section
+			id="home"
+			class="relative overflow-hidden">
+			<div
+				class="absolute inset-0 bg-gradient-to-br from-brand/5 via-transparent to-brand/10 pointer-events-none"></div>
+			<div
+				class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-16 grid md:grid-cols-2 items-center gap-10">
+				<div>
+					<div
+						class="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand/10 text-brand px-3 py-1 text-xs font-semibold">
+						NEW • 숏폼 자동화
+					</div>
+					<h1
+						class="mt-4 text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight">
+						1분 만에 숏폼 자동생산,<br class="hidden sm:block" />
+						매출은 자동상승
+					</h1>
+					<p class="mt-4 text-gray-600">
+						아이디어만 있으면 숏픽이 스크립트·템플릿·편집·배포까지
+						자동으로 수행합니다. 광고·콘텐츠·리뷰 제작의 시간을
+						절감하세요.
+					</p>
+					<div class="mt-6 flex flex-col sm:flex-row gap-3">
+						<a
+							id="cta-primary-hero"
+							href="#lead"
+							class="px-5 py-3 rounded-xl bg-brand text-white font-semibold hover:bg-brand.dark shadow-smooth"
+							>무료로 시작</a
+						>
+						<a
+							href="#demo"
+							class="px-5 py-3 rounded-xl border border-gray-200 hover:border-brand/40"
+							>데모 보기</a
+						>
+					</div>
+					<div
+						class="mt-6 flex items-center gap-4 text-xs text-gray-500">
+						<span class="inline-flex items-center gap-1"
+							>✅ 하루 10~무제한 생성</span
+						>
+						<span class="inline-flex items-center gap-1"
+							>✅ 배포 스케줄러</span
+						>
+						<span class="inline-flex items-center gap-1"
+							>✅ 성과 추적</span
+						>
+					</div>
+				</div>
+				<!-- Visual -->
+				<div
+					id="demo"
+					class="relative">
+					<div
+						class="aspect-[16/10] rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 shadow-smooth overflow-hidden">
+						<div
+							class="absolute inset-0 flex items-center justify-center">
+							<div class="text-center">
+								<div class="text-sm text-gray-500">
+									앱 스크린샷/데모 영상 자리
+								</div>
+								<div class="mt-2 text-xs text-gray-400">
+									/assets/demo.mp4 또는 이미지로 교체
+								</div>
+							</div>
+						</div>
+					</div>
+					<div
+						class="absolute -bottom-4 -left-4 bg-white border border-gray-200 rounded-xl px-4 py-3 shadow-smooth text-sm">
+						지난 7일 생성 148개 • 평균 제작시간 46초
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Logos / Trust -->
+		<section class="py-10 border-y border-gray-100 bg-white">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<p class="text-center text-xs text-gray-500">
+					100+ 광고주와 크리에이터가 선택
+				</p>
+				<div
+					class="mt-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 items-center">
+					<div
+						class="h-10 bg-gray-100 rounded-md"
+						title="logo"></div>
+					<div class="h-10 bg-gray-100 rounded-md"></div>
+					<div class="h-10 bg-gray-100 rounded-md"></div>
+					<div class="h-10 bg-gray-100 rounded-md"></div>
+					<div class="h-10 bg-gray-100 rounded-md"></div>
+					<div class="h-10 bg-gray-100 rounded-md"></div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Features -->
+		<section
+			id="features"
+			class="py-16">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<div class="max-w-2xl">
+					<h2 class="text-3xl font-extrabold tracking-tight">
+						핵심 기능
+					</h2>
+					<p class="mt-2 text-gray-600">
+						제작부터 배포까지 자동화. 반복 작업 제거.
+					</p>
+				</div>
+				<div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+					<article
+						class="p-6 rounded-2xl border border-gray-200 hover:shadow-smooth transition">
+						<h3 class="font-bold">AI 스크립트 생성</h3>
+						<p class="mt-1 text-sm text-gray-600">
+							키워드만 입력하면 후킹 오프닝과 CTA까지.
+						</p>
+					</article>
+					<article
+						class="p-6 rounded-2xl border border-gray-200 hover:shadow-smooth transition">
+						<h3 class="font-bold">템플릿 & 자동편집</h3>
+						<p class="mt-1 text-sm text-gray-600">
+							자막, BGM, 컷 편집, 스티커 자동 적용.
+						</p>
+					</article>
+					<article
+						class="p-6 rounded-2xl border border-gray-200 hover:shadow-smooth transition">
+						<h3 class="font-bold">배치 생성</h3>
+						<p class="mt-1 text-sm text-gray-600">
+							한 번에 10~100개까지 일괄 생성.
+						</p>
+					</article>
+					<article
+						class="p-6 rounded-2xl border border-gray-200 hover:shadow-smooth transition">
+						<h3 class="font-bold">스케줄러</h3>
+						<p class="mt-1 text-sm text-gray-600">
+							틱톡·릴스·쇼츠 업로드 예약.
+						</p>
+					</article>
+					<article
+						class="p-6 rounded-2xl border border-gray-200 hover:shadow-smooth transition">
+						<h3 class="font-bold">광고 크리에이티브</h3>
+						<p class="mt-1 text-sm text-gray-600">
+							AB 테스트용 변형 자동 생성.
+						</p>
+					</article>
+					<article
+						class="p-6 rounded-2xl border border-gray-200 hover:shadow-smooth transition">
+						<h3 class="font-bold">성과 추적</h3>
+						<p class="mt-1 text-sm text-gray-600">
+							조회·클릭·전환을 한눈에 대시보드로.
+						</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<!-- How it works -->
+		<section
+			id="how"
+			class="py-16 bg-gray-50">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<h2 class="text-3xl font-extrabold tracking-tight">
+					작동 방식
+				</h2>
+				<div class="mt-8 grid md:grid-cols-4 gap-5">
+					<div
+						class="p-6 rounded-2xl bg-white border border-gray-200">
+						<span class="text-xs text-gray-500">STEP 1</span>
+						<h3 class="mt-1 font-bold">템플릿 선택</h3>
+						<p class="mt-1 text-sm text-gray-600">
+							브랜드 톤에 맞는 프리셋 고르기
+						</p>
+					</div>
+					<div
+						class="p-6 rounded-2xl bg-white border border-gray-200">
+						<span class="text-xs text-gray-500">STEP 2</span>
+						<h3 class="mt-1 font-bold">스크립트 입력</h3>
+						<p class="mt-1 text-sm text-gray-600">
+							직접 입력 또는 AI 자동 생성
+						</p>
+					</div>
+					<div
+						class="p-6 rounded-2xl bg-white border border-gray-200">
+						<span class="text-xs text-gray-500">STEP 3</span>
+						<h3 class="mt-1 font-bold">자동 생성</h3>
+						<p class="mt-1 text-sm text-gray-600">
+							컷·자막·BGM 자동 적용
+						</p>
+					</div>
+					<div
+						class="p-6 rounded-2xl bg-white border border-gray-200">
+						<span class="text-xs text-gray-500">STEP 4</span>
+						<h3 class="mt-1 font-bold">예약 배포</h3>
+						<p class="mt-1 text-sm text-gray-600">
+							쇼츠·릴스·틱톡으로 스케줄링
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Testimonials -->
+		<section
+			id="testimonials"
+			class="py-16">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<h2 class="text-3xl font-extrabold tracking-tight">
+					사용자 후기
+				</h2>
+				<div class="mt-8 grid md:grid-cols-3 gap-5">
+					<figure
+						class="p-6 rounded-2xl border border-gray-200 bg-white shadow-smooth/0">
+						<blockquote class="text-sm text-gray-700">
+							“주 5시간 절약. 광고 크리에이티브 테스트 속도가 3배
+							빨라짐.”
+						</blockquote>
+						<figcaption class="mt-3 text-xs text-gray-500">
+							퍼포먼스 마케터 L**
+						</figcaption>
+					</figure>
+					<figure
+						class="p-6 rounded-2xl border border-gray-200 bg-white">
+						<blockquote class="text-sm text-gray-700">
+							“리뷰 숏폼 50개를 하루 만에. 스토어 전환이 27%
+							상승.”
+						</blockquote>
+						<figcaption class="mt-3 text-xs text-gray-500">
+							이커머스 대표 K**
+						</figcaption>
+					</figure>
+					<figure
+						class="p-6 rounded-2xl border border-gray-200 bg-white">
+						<blockquote class="text-sm text-gray-700">
+							“템플릿만 바꿔도 조회수 유지. 제작은 자동이라 인건비
+							절감.”
+						</blockquote>
+						<figcaption class="mt-3 text-xs text-gray-500">
+							콘텐츠 팀장 P**
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+		</section>
+
+		<!-- Pricing -->
+		<section
+			id="pricing"
+			class="py-16 bg-gray-50">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<div class="max-w-2xl">
+					<h2 class="text-3xl font-extrabold tracking-tight">가격</h2>
+					<p class="mt-2 text-gray-600">
+						버전 공개 전 예시 가격입니다. 실제 가격은 협의 가능.
+					</p>
+				</div>
+				<div class="mt-8 grid md:grid-cols-3 gap-5">
+					<div
+						class="p-6 rounded-2xl border border-gray-200 bg-white">
+						<h3 class="font-bold">Lite</h3>
+						<p class="mt-2 text-3xl font-extrabold">
+							₩29,000
+							<span class="text-sm font-normal text-gray-500"
+								>/월</span
+							>
+						</p>
+						<ul class="mt-4 space-y-2 text-sm text-gray-700">
+							<li>하루 최대 10개 생성</li>
+							<li>기본 템플릿 10종</li>
+							<li>워터마크 제거 옵션</li>
+						</ul>
+						<a
+							href="#lead"
+							class="mt-6 inline-block px-4 py-2 rounded-xl border border-gray-200 hover:border-brand/40"
+							>시작하기</a
+						>
+					</div>
+					<div
+						class="p-6 rounded-2xl border-2 border-brand bg-white shadow-smooth">
+						<div
+							class="inline-flex text-xs px-2 py-1 rounded-full bg-brand/10 text-brand">
+							추천
+						</div>
+						<h3 class="mt-2 font-bold">Pro</h3>
+						<p class="mt-2 text-3xl font-extrabold">
+							₩99,000
+							<span class="text-sm font-normal text-gray-500"
+								>/월</span
+							>
+						</p>
+						<ul class="mt-4 space-y-2 text-sm text-gray-700">
+							<li>하루 최대 50개 생성</li>
+							<li>고급 템플릿 30종</li>
+							<li>배포 스케줄러</li>
+							<li>광고용 AB 변형 생성</li>
+						</ul>
+						<a
+							href="#lead"
+							class="mt-6 inline-block px-4 py-2 rounded-xl bg-brand text-white hover:bg-brand.dark"
+							>무료 체험</a
+						>
+					</div>
+					<div
+						class="p-6 rounded-2xl border border-gray-200 bg-white">
+						<h3 class="font-bold">Agency</h3>
+						<p class="mt-2 text-3xl font-extrabold">
+							₩299,000
+							<span class="text-sm font-normal text-gray-500"
+								>/월</span
+							>
+						</p>
+						<ul class="mt-4 space-y-2 text-sm text-gray-700">
+							<li>무제한 생성</li>
+							<li>팀 협업 좌석 5명</li>
+							<li>커스텀 템플릿 & 대시보드</li>
+							<li>우선 지원</li>
+						</ul>
+						<a
+							href="#lead"
+							class="mt-6 inline-block px-4 py-2 rounded-xl border border-gray-200 hover:border-brand/40"
+							>상담 문의</a
+						>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- CTA band -->
+		<section class="py-12">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<div
+					class="rounded-2xl bg-gradient-to-br from-brand to-brand.dark text-white p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+					<div>
+						<h3 class="text-2xl font-extrabold">
+							오늘 만든 아이디어, 오늘 바로 배포
+						</h3>
+						<p class="mt-1 text-white/80">
+							클릭 한 번으로 숏폼 10개 생성. 데모로 확인하세요.
+						</p>
+					</div>
+					<a
+						id="cta-primary-band"
+						href="#lead"
+						class="px-5 py-3 rounded-xl bg-white text-brand font-semibold hover:bg-gray-100"
+						>무료 데모 신청</a
+					>
+				</div>
+			</div>
+		</section>
+
+		<!-- Lead form -->
+		<section
+			id="lead"
+			class="py-16 bg-gray-50">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<h2 class="text-3xl font-extrabold tracking-tight">
+					데모·도입 문의
+				</h2>
+				<p class="mt-2 text-gray-600">
+					아래 정보를 남기면 24시간 내 연락. 실사용 화면 시연 제공.
+				</p>
+				<form
+					id="leadForm"
+					class="mt-8 grid md:grid-cols-2 gap-5">
+					<div class="col-span-1">
+						<label class="text-sm text-gray-700">이름</label>
+						<input
+							name="name"
+							required
+							class="mt-1 w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand"
+							placeholder="홍길동" />
+					</div>
+					<div class="col-span-1">
+						<label class="text-sm text-gray-700">연락처</label>
+						<input
+							name="phone"
+							required
+							class="mt-1 w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand"
+							placeholder="010-0000-0000" />
+					</div>
+					<div class="col-span-1">
+						<label class="text-sm text-gray-700">이메일</label>
+						<input
+							type="email"
+							name="email"
+							class="mt-1 w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand"
+							placeholder="you@example.com" />
+					</div>
+					<div class="col-span-1">
+						<label class="text-sm text-gray-700">선호 채널</label>
+						<select
+							name="channel"
+							class="mt-1 w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand">
+							<option>카카오톡</option>
+							<option>텔레그램</option>
+							<option>WhatsApp</option>
+							<option>이메일</option>
+						</select>
+					</div>
+					<div class="md:col-span-2">
+						<label class="text-sm text-gray-700">메시지</label>
+						<textarea
+							name="message"
+							rows="4"
+							class="mt-1 w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand"
+							placeholder="현재 운영 채널과 목표를 알려주세요."></textarea>
+					</div>
+
+					<!-- Hidden UTM fields -->
+					<input
+						type="hidden"
+						name="utm_source" />
+					<input
+						type="hidden"
+						name="utm_medium" />
+					<input
+						type="hidden"
+						name="utm_campaign" />
+					<input
+						type="hidden"
+						name="utm_content" />
+					<input
+						type="hidden"
+						name="referrer" />
+
+					<div
+						class="md:col-span-2 flex items-center justify-between">
+						<p class="text-xs text-gray-500">
+							제출 시 개인정보 처리방침에 동의한 것으로
+							간주됩니다.
+						</p>
+						<button
+							class="px-5 py-3 rounded-xl bg-brand text-white font-semibold hover:bg-brand.dark"
+							type="submit">
+							문의 보내기
+						</button>
+					</div>
+				</form>
+				<p
+					id="leadThanks"
+					class="hidden mt-4 text-sm text-brand">
+					접수 완료. 담당자가 곧 연락합니다.
+				</p>
+			</div>
+		</section>
+
+		<!-- FAQ -->
+		<section
+			id="faq"
+			class="py-16">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<h2 class="text-3xl font-extrabold tracking-tight">
+					자주 묻는 질문
+				</h2>
+				<div class="mt-6 space-y-3">
+					<details
+						class="group border border-gray-200 rounded-xl p-4">
+						<summary
+							class="font-semibold cursor-pointer flex items-center justify-between">
+							영상은 어디에 업로드되나요?<span
+								class="text-gray-400 group-open:rotate-180 transition"
+								>⌃</span
+							>
+						</summary>
+						<p class="mt-2 text-sm text-gray-600">
+							틱톡·유튜브 쇼츠·인스타 릴스 계정에 연결하여 예약
+							업로드합니다.
+						</p>
+					</details>
+					<details
+						class="group border border-gray-200 rounded-xl p-4">
+						<summary
+							class="font-semibold cursor-pointer flex items-center justify-between">
+							워터마크가 있나요?<span
+								class="text-gray-400 group-open:rotate-180 transition"
+								>⌃</span
+							>
+						</summary>
+						<p class="mt-2 text-sm text-gray-600">
+							유료 플랜에서 제거 가능합니다.
+						</p>
+					</details>
+					<details
+						class="group border border-gray-200 rounded-xl p-4">
+						<summary
+							class="font-semibold cursor-pointer flex items-center justify-between">
+							템플릿을 커스텀할 수 있나요?<span
+								class="text-gray-400 group-open:rotate-180 transition"
+								>⌃</span
+							>
+						</summary>
+						<p class="mt-2 text-sm text-gray-600">
+							브랜드 폰트·컬러·로고 기준으로 커스텀 템플릿을
+							제공합니다.
+						</p>
+					</details>
+				</div>
+			</div>
+		</section>
+
+		<footer class="py-10 border-t border-gray-100 text-sm">
+			<div
+				class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+				<div class="flex items-center gap-3">
+					<span
+						class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-brand text-white"
+						>S</span
+					>
+					<span class="font-semibold">SHORTPICK</span>
+					<span class="text-gray-400">© <span id="year"></span></span>
+				</div>
+				<div class="flex items-center gap-4">
+					<a
+						href="#"
+						class="text-gray-500 hover:text-brand"
+						>개인정보 처리방침</a
+					>
+					<a
+						href="#"
+						class="text-gray-500 hover:text-brand"
+						>이용약관</a
+					>
+					<a
+						href="#lead"
+						class="text-gray-500 hover:text-brand"
+						>문의</a
+					>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+			// Mobile nav toggle
+			document
+				.getElementById("btn-mobile")
+				.addEventListener("click", () => {
+					document
+						.getElementById("mobile-nav")
+						.classList.toggle("hidden");
+				});
+
+			// Year
+			document.getElementById("year").textContent =
+				new Date().getFullYear();
+
+			// Capture UTM params
+			const params = new URLSearchParams(location.search);
+			const utmKeys = [
+				"utm_source",
+				"utm_medium",
+				"utm_campaign",
+				"utm_content"
+			];
+			const form = document.getElementById("leadForm");
+			form.referrer.value = document.referrer || "";
+			utmKeys.forEach(k => {
+				if (params.get(k)) form[k].value = params.get(k);
+			});
+
+			// Simple submit handler (replace with your webhook)
+			form.addEventListener("submit", async e => {
+				e.preventDefault();
+				const data = Object.fromEntries(new FormData(form).entries());
+				console.log("[Lead]", data);
+
+				// TODO: 여기서 실제 전송 로직으로 교체
+				// 예시) fetch('https://webhook.site/xxxx', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)});
+
+				document
+					.getElementById("leadThanks")
+					.classList.remove("hidden");
+				window.dataLayer = window.dataLayer || [];
+				window.dataLayer.push({ event: "lead_submit", lead: data });
+			});
+
+			// CTA tracking
+			["cta-primary-top", "cta-primary-hero", "cta-primary-band"].forEach(
+				id => {
+					const el = document.getElementById(id);
+					if (el) {
+						el.addEventListener("click", () => {
+							(window.dataLayer || []).push({
+								event: "cta_click",
+								id
+							});
+						});
+					}
+				}
+			);
+		</script>
+
+		<!-- 배포 메모
+    1) 이 파일을 shortpick.html 로 저장
+    2) GitHub Pages: repo 루트에 index.html 로 올리면 즉시 접속 가능
+    3) OG 이미지 /assets/ 경로 교체, 픽셀·GTM 코드 활성화
+  -->
+	</body>
+</html>
