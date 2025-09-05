@@ -43,11 +43,19 @@
             display: none;
         }
         .feature-item {
-            padding: 4rem;
+            padding: 0;
+            min-height: 30rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
         }
         .feature-icon {
-            font-size: 5rem;
-            margin-bottom: 2rem;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            border-radius: 0;
+            flex: 1;
         }
         .feature-item-title {
             font-size: 2.5rem;
@@ -55,6 +63,11 @@
         }
         .feature-item-desc {
             font-size: 1.6rem;
+        }
+        .feature-text-content {
+            margin-top: auto;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.95);
         }
     }
     .feature-item {
@@ -72,9 +85,15 @@
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
     .feature-icon {
-        font-size: 2rem;
-        margin-bottom: 0.8rem;
+        width: 100%;
+        height: 8rem;
+        margin: 0 auto 0.8rem auto;
         display: block;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    .feature-icon-mobile {
+        display: none;
     }
     .feature-item-title {
         font-size: 1rem;
@@ -103,6 +122,16 @@
         .feature-item {
             padding: 1rem;
         }
+        .feature-icon {
+            display: none;
+        }
+        .feature-icon-mobile {
+            display: block;
+            width: 5rem;
+            height: 5rem;
+            margin: 0 auto 0.8rem auto;
+            object-fit: contain;
+        }
         .feature-title {
             font-size: 1.5rem;
         }
@@ -121,33 +150,45 @@
         
         <div class="feature-grid">
             <div class="feature-item">
-                <span class="feature-icon">📱</span>
-                <h3 class="feature-item-title">간단한 정보 입력</h3>
-                <p class="feature-item-desc">제품 사진과 기본 정보만 입력하면 끝</p>
+                <img src="../images/touch.jpg" alt="정보 입력" class="feature-icon">
+                <img src="../images/touch-m.jpg" alt="정보 입력" class="feature-icon-mobile">
+                <div class="feature-text-content">
+                    <h3 class="feature-item-title">간단한 정보 입력</h3>
+                    <p class="feature-item-desc">제품 사진과 기본 정보만 입력하면 끝</p>
+                </div>
             </div>
             
             <div class="arrow-down">&#10151;</div>
             
             <div class="feature-item">
-                <span class="feature-icon">🤖</span>
-                <h3 class="feature-item-title">AI 자동 제작</h3>
-                <p class="feature-item-desc">스크립트, 편집, 자막까지 AI가 자동 생성</p>
+                <img src="../images/ai.jpg" alt="AI 자동 제작" class="feature-icon">
+                <img src="../images/ai-m.jpg" alt="AI 자동 제작" class="feature-icon-mobile">
+                <div class="feature-text-content">
+                    <h3 class="feature-item-title">AI 자동 제작</h3>
+                    <p class="feature-item-desc">스크립트, 편집, 자막까지 AI가 자동 생성</p>
+                </div>
             </div>
             
             <div class="arrow-down">&#10151;</div>
             
             <div class="feature-item">
-                <span class="feature-icon">✂️</span>
-                <h3 class="feature-item-title">전문가 다듬기</h3>
-                <p class="feature-item-desc">마케팅 전문가가 완성도 높게 수정 및 보완</p>
+                <img src="../images/ai-hum.jpg" alt="전문가 다듬기" class="feature-icon">
+                <img src="../images/hum-m.jpg" alt="전문가 다듬기" class="feature-icon-mobile">
+                <div class="feature-text-content">
+                    <h3 class="feature-item-title">전문가 다듬기</h3>
+                    <p class="feature-item-desc">마케팅 전문가가 완성도 높게 수정 및 보완</p>
+                </div>
             </div>
             
             <div class="arrow-down">&#10151;</div>
             
             <div class="feature-item">
-                <span class="feature-icon">🚀</span>
-                <h3 class="feature-item-title">즉시 SNS 배포</h3>
-                <p class="feature-item-desc">유튜브, 틱톡, 인스타에 바로 업로드</p>
+                <img src="../images/sns.jpg" alt="SNS 배포" class="feature-icon">
+                <img src="../images/sns-m.jpg" alt="SNS 배포" class="feature-icon-mobile">
+                <div class="feature-text-content">
+                    <h3 class="feature-item-title">즉시 SNS 배포</h3>
+                    <p class="feature-item-desc">유튜브, 틱톡, 인스타에 바로 업로드</p>
+                </div>
             </div>
         </div>
     </div>
