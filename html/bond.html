@@ -1,0 +1,198 @@
+<section id="resonance" class="section" aria-labelledby="resonance-title">
+  <style>
+    #resonance{--bg:#fdfcf7;--line:#e5e2d8;--text:#2c2c2c;--muted:#555;--primary:#a67c52;--accent:#c49a6c}
+    #resonance .header{padding:12px 4px 12px;border-bottom:1px solid var(--line)}
+    #resonance .eyebrow{color:var(--accent);font-size:12px;letter-spacing:.12em;font-weight:700}
+    #resonance h2{margin:6px 0 6px;font-size:24px;color:var(--text)}
+    #resonance .sub{color:var(--muted);font-size:15px}
+
+    /* Tabs */
+    #resonance .tabs{display:flex;gap:8px;margin:12px 0}
+    #resonance .tab{border:1px solid var(--line);background:#fff;color:var(--text);padding:8px 12px;border-radius:999px;font-size:13px;cursor:pointer}
+    #resonance .tab.is-active{background:linear-gradient(135deg,#eadfcf,#fff);border-color:#d7cab5;font-weight:700}
+    #resonance .panels>[hidden]{display:none!important}
+
+    #resonance .grid{display:grid;gap:16px;margin-top:8px}
+    @media (min-width:720px){#resonance .grid{grid-template-columns:repeat(2,1fr)}}
+
+    #resonance .card{position:relative;border:1px solid var(--line);border-radius:14px;background:#fff;padding:16px;min-height:168px;cursor:pointer;transition:background-color .25s,transform .25s,box-shadow .25s}
+    #resonance .card:hover{background:#fff8ed;transform:translateY(-2px);box-shadow:0 6px 16px rgba(166,124,82,.2)}
+    #resonance .row{display:flex;align-items:center;gap:10px}
+    #resonance .icon{width:28px;height:28px;display:inline-grid;place-items:center;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff}
+    #resonance h3{margin:0;font-size:17px;color:var(--text)}
+    #resonance p{margin:8px 0 6px;color:var(--muted)}
+    #resonance ul{margin:6px 0 0 18px;color:var(--muted);font-size:14px}
+
+    /* Overlay (fixed inside card) */
+    #resonance .extra{position:absolute;inset:0;border-radius:12px;border:1px solid var(--line);background:#fffef9;box-shadow:0 10px 24px rgba(166,124,82,.25);padding:16px 16px 18px;color:var(--text);overflow:auto;opacity:0;visibility:hidden;transform:scale(.96);transition:opacity .2s,transform .2s,visibility .2s;pointer-events:none}
+    #resonance .card.active .extra{opacity:1;visibility:visible;transform:scale(1);pointer-events:auto}
+    #resonance .close{position:absolute;top:10px;right:12px;font-weight:700;cursor:pointer;background:#fff;border:1px solid var(--line);border-radius:6px;padding:2px 6px}
+
+    #resonance .switch{display:flex;gap:8px;margin-bottom:10px}
+    #resonance .pill{border:1px solid var(--line);background:#fff;color:var(--text);padding:6px 10px;border-radius:999px;font-size:12px;cursor:pointer}
+    #resonance .pill[aria-pressed="true"]{background:#ffeccc;border-color:var(--primary);font-weight:700}
+    #resonance .extra-body{font-size:14px;color:var(--muted)}
+
+    #resonance .cta{display:grid;gap:10px;margin-top:16px;padding-top:12px;border-top:1px solid var(--line)}
+    #resonance .btn{justify-self:start;padding:10px 16px;border-radius:10px;font-weight:700;font-size:14px;background:var(--primary);color:#fff;border:0}
+  </style>
+
+  <header class="header">
+    <div class="eyebrow">STEP 3</div>
+    <h2 id="resonance-title">공감대 형성</h2>
+    <p class="sub">숏픽은 영상 광고가 낯선 40대 이상 자영업자부터, 처음 도전하는 청년까지 누구나 쉽게 사용할 수 있게 설계했습니다.</p>
+  </header>
+
+  <!-- tabs -->
+  <nav class="tabs" role="tablist" aria-label="대상 선택">
+    <button class="tab is-active" role="tab" aria-selected="true" data-target="owner">사장님용(40+)</button>
+    <button class="tab" role="tab" aria-selected="false" data-target="newbie">초보 마케터</button>
+    <button class="tab" role="tab" aria-selected="false" data-target="all">모두 보기</button>
+  </nav>
+
+  <div class="panels">
+    <!-- Panel: owner -->
+    <div class="panel" data-panel="owner">
+      <div class="grid">
+        <article class="card" role="listitem" data-key="owner-pain">
+          <div class="row"><span class="icon">!</span><h3>사장님 고민</h3></div>
+          <p>영상은 어렵고 광고비는 부담. 앱은 복잡합니다.</p>
+          <ul><li>촬영·편집 자신 없음</li><li>소액으로 효과 내고 싶음</li><li>예약·전화만 연결되면 됨</li></ul>
+          <div class="extra" role="dialog" aria-label="사장님 고민 상세">
+            <span class="close" aria-label="닫기">✕</span>
+            <div class="switch" role="tablist" aria-label="세부 설명">
+              <button class="pill" role="tab" data-info="왜" aria-pressed="true">왜?</button>
+              <button class="pill" role="tab" data-info="어떻게" aria-pressed="false">어떻게?</button>
+              <button class="pill" role="tab" data-info="결과" aria-pressed="false">결과</button>
+            </div>
+            <div class="extra-body"></div>
+          </div>
+        </article>
+
+        <article class="card" role="listitem" data-key="owner-solution">
+          <div class="row"><span class="icon">★</span><h3>숏픽이 대신합니다</h3></div>
+          <p>복잡함 제거. 필요한 버튼만 남겼습니다.</p>
+          <ul><li>템플릿 선택 → 사진 업로드 → 완료</li><li>전화/톡/지도 버튼 즉시 연결</li><li>하루 예산 5천원부터</li></ul>
+          <div class="extra" role="dialog" aria-label="숏픽 상세">
+            <span class="close" aria-label="닫기">✕</span>
+            <div class="switch" role="tablist" aria-label="세부 설명">
+              <button class="pill" role="tab" data-info="왜" aria-pressed="true">왜?</button>
+              <button class="pill" role="tab" data-info="어떻게" aria-pressed="false">어떻게?</button>
+              <button class="pill" role="tab" data-info="결과" aria-pressed="false">결과</button>
+            </div>
+            <div class="extra-body"></div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Panel: newbie -->
+    <div class="panel" data-panel="newbie" hidden>
+      <div class="grid">
+        <article class="card" role="listitem" data-key="newbie-steps">
+          <div class="row"><span class="icon">✓</span><h3>초보도 3단계</h3></div>
+          <p>템플릿 → 사진/문구 → 게시.</p>
+          <ul><li>설명 풍선 가이드</li><li>저작권 안전 음악 자동</li><li>비율 자동 맞춤</li></ul>
+          <div class="extra" role="dialog" aria-label="3단계 상세">
+            <span class="close" aria-label="닫기">✕</span>
+            <div class="switch"><button class="pill" data-info="왜" aria-pressed="true">왜?</button><button class="pill" data-info="어떻게" aria-pressed="false">어떻게?</button><button class="pill" data-info="결과" aria-pressed="false">결과</button></div>
+            <div class="extra-body"></div>
+          </div>
+        </article>
+
+        <article class="card" role="listitem" data-key="newbie-boost">
+          <div class="row"><span class="icon">＋</span><h3>자동 최적화</h3></div>
+          <p>좋은 시간대 추천과 문구 A/B.</p>
+          <ul><li>추천 해시태그</li><li>댓글 유도 문구</li><li>지역 키워드</li></ul>
+          <div class="extra" role="dialog" aria-label="최적화 상세">
+            <span class="close" aria-label="닫기">✕</span>
+            <div class="switch"><button class="pill" data-info="왜" aria-pressed="true">왜?</button><button class="pill" data-info="어떻게" aria-pressed="false">어떻게?</button><button class="pill" data-info="결과" aria-pressed="false">결과</button></div>
+            <div class="extra-body"></div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- Panel: all -->
+    <div class="panel" data-panel="all" hidden>
+      <div class="grid">
+        <article class="card" role="listitem" data-key="all-why">
+          <div class="row"><span class="icon">→</span><h3>왜 지금 숏폼?</h3></div>
+          <p>사진 5장으로 15초. 제작·업로드 1분.</p>
+          <ul><li>저예산도 효율</li><li>지역·관심사 노출</li><li>전화/방문 유도</li></ul>
+          <div class="extra" role="dialog" aria-label="이유 상세">
+            <span class="close" aria-label="닫기">✕</span>
+            <div class="switch"><button class="pill" data-info="왜" aria-pressed="true">왜?</button><button class="pill" data-info="어떻게" aria-pressed="false">어떻게?</button><button class="pill" data-info="결과" aria-pressed="false">결과</button></div>
+            <div class="extra-body"></div>
+          </div>
+        </article>
+
+        <article class="card" role="listitem" data-key="all-how">
+          <div class="row"><span class="icon">★</span><h3>어떻게 간편해지나</h3></div>
+          <p>쇼츠·릴스·틱톡· 자동영상 5분컷.</p>
+          <ul><li>전화·배달·예약 버튼</li><li>전화 연결 로그</li><li>간편 영수증</li></ul>
+          <div class="extra" role="dialog" aria-label="간편 상세">
+            <span class="close" aria-label="닫기">✕</span>
+            <div class="switch"><button class="pill" data-info="왜" aria-pressed="true">왜?</button><button class="pill" data-info="어떻게" aria-pressed="false">어떻게?</button><button class="pill" data-info="결과" aria-pressed="false">결과</button></div>
+            <div class="extra-body"></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <script>
+    (function(){
+      const root=document.getElementById('resonance');
+      const tabs=[...root.querySelectorAll('.tab')];
+      const panels=[...root.querySelectorAll('.panel')];
+      const copyDeck={
+        "owner-pain":{왜:"디지털 진입 장벽이 큽니다. 촬영·편집·광고집행이 각각 다른 도구입니다.", 어떻게:"사진 3장과 한 줄만 입력 → 자동 자막·음악·컷편집 → 전화/톡 버튼 삽입.", 결과:"첫 영상 10분 내 완성. 예약·전화 전환 시도 증가."},
+        "owner-solution":{왜:"사장님이 해야 할 일을 최소화합니다.", 어떻게:"업종별 템플릿과 색·폰트를 미리 세팅. 버튼 연결만 체크하면 끝.", 결과:"세팅 시간과 오류 감소. 소액 예산으로 테스트 가능."},
+        "newbie-steps":{왜:"시작 장벽을 낮추면 실행 빈도가 올라갑니다.", 어떻게:"3단계 절차와 풍선 가이드. 비율·음악 자동.", 결과:"첫 주 3개 제작이 쉬움."},
+        "newbie-boost":{왜:"노출 시간·문구가 결과를 좌우합니다.", 어떻게:"좋은 시간대 추천과 A/B 문구.", 결과:"조회·전화 전환률 상승."},
+        "all-why":{왜:"짧은 주목시간에 맞는 포맷.", 어떻게:"사진 몇 장으로 스토리화.", 결과:"제작비 절감과 빠른 테스트."},
+        "all-how":{왜:"반복 업무 자동화가 핵심.", 어떻게:"템플릿·자막·CTA 자동, 버튼 로그 기록.", 결과:"운영 시간이 줄고 데이터가 쌓임."}
+      };
+
+      function showPanel(key){
+        tabs.forEach(t=>t.classList.toggle('is-active', t.dataset.target===key));
+        panels.forEach(p=>{const on=p.dataset.panel===key; p.hidden=!on; if(!on) p.querySelectorAll('.card.active').forEach(c=>c.classList.remove('active'));});
+      }
+      tabs.forEach(t=>t.addEventListener('click',()=>showPanel(t.dataset.target)));
+      showPanel('owner');
+
+      // per-panel single-open
+      panels.forEach(panel=>{
+        let openCard=null;
+        panel.addEventListener('click',e=>{
+          const close=e.target.closest('.close');
+          if(close){ const card=close.closest('.card'); card.classList.remove('active'); if(openCard===card) openCard=null; return; }
+          const card=e.target.closest('.card');
+          if(!card||!panel.contains(card)) return;
+          if(e.target.closest('.extra')) return; // overlay inner clicks are handled below
+          if(openCard&&openCard!==card) openCard.classList.remove('active');
+          card.classList.add('active'); openCard=card;
+          const body=card.querySelector('.extra-body');
+          const pills=card.querySelectorAll('.pill');
+          pills.forEach(p=>p.setAttribute('aria-pressed', p.dataset.info==='왜' ? 'true':'false'));
+          const key=card.dataset.key; body.textContent=(copyDeck[key]&&copyDeck[key]['왜'])||'';
+        });
+        // inside overlay: pill switching
+        panel.querySelectorAll('.extra').forEach(ex=>{
+          ex.addEventListener('click',e=>{
+            if(e.target.classList.contains('close')) return; // handled above
+            const pill=e.target.closest('.pill'); if(!pill) return;
+            const card=ex.closest('.card');
+            const pills=[...card.querySelectorAll('.pill')]; pills.forEach(p=>p.setAttribute('aria-pressed','false')); pill.setAttribute('aria-pressed','true');
+            const body=card.querySelector('.extra-body'); const key=card.dataset.key; const which=pill.dataset.info; body.textContent=(copyDeck[key]&&copyDeck[key][which])||'';
+          });
+        });
+      });
+
+      document.addEventListener('keydown',e=>{ if(e.key!=='Escape') return; const vis=[...panels].find(p=>!p.hidden); vis && vis.querySelectorAll('.card.active').forEach(c=>c.classList.remove('active')); });
+    })();
+  </script>
+</section>
