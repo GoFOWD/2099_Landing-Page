@@ -97,7 +97,34 @@
 					</ul>
 				</li>
 			</ul>
-			<button class="btn btn-light border-dark mx-2">로그인</button>
+			<!-- 로그인 버튼 - 모달 트리거 -->
+			<button type="button" class="btn btn-light border-dark mx-2 text-light-emphasis" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+			로그인
+			</button>
+			<!-- 로그인 버튼 누르면 나오는 모달 -->
+			<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="mb-3">
+							<label for="exampleFormControlInput1" class="form-label">이메일</label>
+							<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+							<label for="inputPassword5" class="form-label mt-3">Password</label>
+							<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-light" data-bs-dismiss="modal">로그인</button>
+					<button type="button" class="btn btn-dark">회원가입</button>
+				</div>
+				</div>
+			</div>
+			</div>
 			<button class="btn btn-dark">무료로 시작하기</button>
 		</div>
 	</div>

@@ -1,0 +1,24 @@
+#logo_scroll-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+#logo_scroll-track {
+  display: flex; 
+  flex: 0 0 150px;
+  gap: 10rem; 
+  animation: marquee-scroll 20s linear infinite; 
+  will-change: transform;
+}
+
+.logo_scroll-track div {
+  display: flex;
+  flex: 0 0 150px;
+}
+
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
