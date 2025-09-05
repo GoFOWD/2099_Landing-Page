@@ -1,0 +1,132 @@
+<style>
+    .feature-section {
+        background: linear-gradient(135deg, #faf8f5, #f5f2ed);
+        padding: 2rem 0;
+        border-top: 1px solid #e8e4e0;
+        border-bottom: 1px solid #e8e4e0;
+    }
+    .feature-title {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: #2c2c2c;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+    .feature-subtitle {
+        font-size: 1rem;
+        color: #666;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-weight: 500;
+    }
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.05rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .arrow-down {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #d4c4a8;
+        margin: 0.5rem 0;
+        font-weight: bold;
+        transform: scaleX(2.5) scaleY(0.8) rotate(90deg);
+        display: inline-block;
+    }
+    .feature-item {
+        background: rgba(255, 255, 255, 0.8);
+        border: 2px solid #e8e4e0;
+        border-radius: 12px;
+        padding: 1.2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    .feature-item:hover {
+        transform: translateY(-3px);
+        border-color: #d4c4a8;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    .feature-icon {
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+        display: block;
+    }
+    .feature-item-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #2c2c2c;
+        margin-bottom: 0.5rem;
+    }
+    .feature-item-desc {
+        font-size: 0.85rem;
+        color: #666;
+        line-height: 1.4;
+    }
+    .highlight {
+        background: linear-gradient(135deg, #d4c4a8, #c7b299);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 800;
+    }
+    
+    @media (max-width: 768px) {
+        .feature-grid {
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+        }
+        .feature-item {
+            padding: 1rem;
+        }
+        .feature-title {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+
+<section class="feature-section">
+    <div class="container">
+        <h2 class="feature-title">
+            <span class="highlight">간단한 정보만으로</span><br>
+            전문가급 숏폼 광고 완성
+        </h2>
+        <p class="feature-subtitle">
+            마케팅이 어려운 자영업자를 위한 빠른 광고
+        </p>
+        
+        <div class="feature-grid">
+            <div class="feature-item">
+                <span class="feature-icon">📱</span>
+                <h3 class="feature-item-title">간단한 정보 입력</h3>
+                <p class="feature-item-desc">제품 사진과 기본 정보만 입력하면 끝</p>
+            </div>
+            
+            <div class="arrow-down">&#10151;</div>
+            
+            <div class="feature-item">
+                <span class="feature-icon">🤖</span>
+                <h3 class="feature-item-title">AI 자동 제작</h3>
+                <p class="feature-item-desc">스크립트, 편집, 자막까지 AI가 자동 생성</p>
+            </div>
+            
+            <div class="arrow-down">&#10151;</div>
+            
+            <div class="feature-item">
+                <span class="feature-icon">✂️</span>
+                <h3 class="feature-item-title">전문가 다듬기</h3>
+                <p class="feature-item-desc">마케팅 전문가가 완성도 높게 수정 및 보완</p>
+            </div>
+            
+            <div class="arrow-down">&#10151;</div>
+            
+            <div class="feature-item">
+                <span class="feature-icon">🚀</span>
+                <h3 class="feature-item-title">즉시 SNS 배포</h3>
+                <p class="feature-item-desc">유튜브, 틱톡, 인스타에 바로 업로드</p>
+            </div>
+        </div>
+    </div>
+</section>
