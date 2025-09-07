@@ -1,22 +1,19 @@
-// 페이지 로드 시 애니메이션 실행
-            document.addEventListener('DOMContentLoaded', function () {
-                // 메트릭 바 애니메이션
-                setTimeout(function () {
-                    const bars = document.querySelectorAll('.metric-fill');
-                    bars.forEach(function (bar) {
-                        const width = bar.getAttribute('data-width');
-                        bar.style.width = width;
-                    });
-                }, 500);
+const slides = document.querySelectorAll(".nSlide");
+const container = document.querySelector(".nStichyBody");
+const totalSlides = slides.length;
 
-                // 호버 효과 (모바일에서는 터치 이벤트)
-                const cards = document.querySelectorAll('.comp-card');
-                cards.forEach(function (card) {
-                    card.addEventListener('mouseenter', function () {
-                        this.style.transform = 'translateY(-5px)';
-                    });
-                    card.addEventListener('mouseleave', function () {
-                        this.style.transform = 'translateY(0)';
-                    });
-                });
-            });
+window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    const containerTop = container.offsetTop;
+    const containerHeight = container.offsetHeight;
+
+    // container 내부에서의 스크롤 비율 (0~1)
+    const progress = Math.min(Math.max((scrollY - containerTop) / containerHeight, 0), 1);
+
+    // 현재 보여줄 인덱스 계산
+    const index = Math.floor(progress * totalSlides +0.5);
+
+    slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === index);
+    });
+});

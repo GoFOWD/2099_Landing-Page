@@ -1,199 +1,21 @@
 <main>
     <!--컨테이너 패딩-->
-    <div>
-        <!--컨테이너 정렬-->
-        <div class="row row-cols-1 row-cols-md-1 align-items-md-center g-5 py-5 px-4">
-            <div class="divider"></div>
 
-            <!--necessity 헤더 수정-->
-            <h2 class="fw-bold text-body-emphasis" style="text-align: center; width: 100%;">
-                답은 숏픽입니다!
+    <div class="nStichyBody">
+        <!--컨테이너 정렬
+            todo 1 : 내가 작성한 코드의 내용이 전부 지나가기 전까지, 현재 화면에 가득차서 넘어가지 않는 것처럼 보이는 연출
+        -->
+        <div class="nSticky">
+            <h2 id="nHeadText" class="py-5 ">
+                광고, 숏픽에서 하면 <br>
+                가장 좋은 이유.
             </h2>
-            <!--첫번째 파트 획득되는 이득-->
-            <div class="col d-flex justify-content-center">
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-4 g-4 col-10">
-                    <!--첫 번째 카드-->
-                    <div id="card" class="col d-flex flex-column gap-2 " >
-                        <div id="box-image-1" class="card d-flex flex-row box-height" style="width: 100%; border-radius: 10px;">
-                            <div id="box"></div>
-                            <div class="card-img-overlay col-9">
-                                <!-- 카드 제목 변경-->
-                                <h3 class="card-title"><strong>70만 이상</strong></h3>
-                                <p class="card-text">
-                                    <!-- 카드 소제목 변경-->
-                                <h5><strong>광고 비용 절약 가능</strong></h5>
-                                <!-- 카드 내용 변경-->
-                                숏픽을 사용하면 광고 생성 비용을 70만원 이상 절약할 수 있어요
-                                </p>
-                            </div>
-                            <!-- 카드 이미지 변경-->
-                            <div class="col-2 align-self-end justify-content-end m-2">
-                                <img id="necessityImage" src="../images/testImage.png">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--두 번째 카드-->
-                    <div id="card" class="col d-flex flex-column gap-2">
-                        <div id="box-image-2" class="card d-flex flex-row box-height" style="width: 100%; border-radius: 10px;">
-                            <div id="box"></div>
-                            <div class="card-img-overlay col-9">
-                                <h3 class="card-title"><strong>70만 이상</strong></h3>
-                                <p class="card-text">
-                                <h5><strong>광고 비용 절약 가능</strong></h5>
-                                숏픽을 사용하면 광고 생성 비용을 70만원 이상 절약할 수 있어요
-                                </p>
-                            </div>
-                            <div class="col-2 align-self-end justify-content-end m-2">
-                                <img id="necessityImage" src="../images/testImage.png">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--세 번째 카드-->
-                    <div id="card" class="col d-flex flex-column gap-2">
-                        <div id="box-image-3" class="card d-flex flex-row box-height" style="width: 100%; border-radius: 10px;">
-                            <div id="box"></div>
-                            <div class="card-img-overlay col-9">
-                                <h3 class="card-title"><strong>70만 이상</strong></h3>
-                                <p class="card-text">
-                                <h5><strong>광고 비용 절약 가능</strong></h5>
-                                숏픽을 사용하면 광고 생성 비용을 70만원 이상 절약할 수 있어요
-                                </p>
-                            </div>
-                            <div class="col-2 align-self-end justify-content-end m-2">
-                                <img id="necessityImage" src="../images/testImage.png">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--네 번째 카드-->
-                    <div id="card" class="col d-flex flex-column gap-2">
-                        <div id="box-image-4" class="card d-flex flex-row box-height" style="width: 100%; border-radius: 10px;">
-                            <div id="box"></div>
-                            <div class="card-img-overlay col-9">
-                                <h3 class="card-title"><strong>70만 이상</strong></h3>
-                                <p class="card-text">
-                                <h5><strong>광고 비용 절약 가능</strong></h5>
-                                숏픽을 사용하면 광고 생성 비용을 70만원 이상 절약할 수 있어요
-                                </p>
-                            </div>
-                            <div class="col-2 align-self-end justify-content-end m-2">
-                                <img id="necessityImage" src="../images/testImage.png">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!--슬라이드 카드 등록-->
+            <div class="nStickyContent">
+                <div class="nSlide">아임웹에서</div>
+                <div class="nSlide">시작하는</div>
+                <div class="nSlide">브랜드 커머스</div>
             </div>
         </div>
-
-        <!--두번째 파트 타 어플과의 비교-->
-                <!--비교 카드들-->
-                <div class="comparison-cards mb-3">
-                    <div class="text-center mb-4">
-                        <h3 class="fw-bold mb-2">숏픽이 왜 최고의 선택인지 확인해보세요</h3>
-                    </div>
-
-                    <div class="row g-4">
-                        <!-- 숏픽 카드 -->
-                        <div class="col-md-6" >
-                            <div class="comp-card winner-card p-4" >
-                                <div class="winner-badge">BEST!</div>
-                                <div class="app-icon shortpick-icon">⚡</div>
-                                <h4 class="text-center mb-4">숏픽</h4>
-
-                                <div class="mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <span>생성 속도</span>
-                                        <span class="fw-bold">5초</span>
-                                    </div>
-                                    <div class="metric-bar">
-                                        <div class="metric-fill shortpick-fill" data-width="95%"></div>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <span>비용 절약</span>
-                                        <span class="fw-bold">70만원+</span>
-                                    </div>
-                                    <div class="metric-bar">
-                                        <div class="metric-fill shortpick-fill" data-width="90%"></div>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <span>사용 편의성</span>
-                                        <span class="fw-bold">95%</span>
-                                    </div>
-                                    <div class="metric-bar">
-                                        <div class="metric-fill shortpick-fill" data-width="95%"></div>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <span>품질 만족도</span>
-                                        <span class="fw-bold">98%</span>
-                                    </div>
-                                    <div class="metric-bar">
-                                        <div class="metric-fill shortpick-fill" data-width="98%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 경쟁사 카드 -->
-                        <div class="col-md-6">
-                            <div class="comp-card p-4">
-                                <div class="app-icon competitor-icon">📱</div>
-                                <h4 class="text-center mb-4">타 앱들</h4>
-
-                                <div class="mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <span>생성 속도</span>
-                                        <span class="fw-bold">30분+</span>
-                                    </div>
-                                    <div class="metric-bar">
-                                        <div class="metric-fill competitor-fill" data-width="15%"></div>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <span>비용 절약</span>
-                                        <span class="fw-bold">제한적</span>
-                                    </div>
-                                    <div class="metric-bar">
-                                        <div class="metric-fill competitor-fill" data-width="25%"></div>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <span>사용 편의성</span>
-                                        <span class="fw-bold">65%</span>
-                                    </div>
-                                    <div class="metric-bar">
-                                        <div class="metric-fill competitor-fill" data-width="65%"></div>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <div class="d-flex justify-content-between">
-                                        <span>품질 만족도</span>
-                                        <span class="fw-bold">72%</span>
-                                    </div>
-                                    <div class="metric-bar">
-                                        <div class="metric-fill competitor-fill" data-width="72%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
 </main>
-<script src="../assets/dist/js/bootstrap.bundle.min.js" class="astro-vvvwv3sm"></script>
