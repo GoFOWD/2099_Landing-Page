@@ -52,33 +52,65 @@
 			display: none !important;
 		}
 
-    #resonance .grid{display:grid;gap:20px;margin-top:8px}
-    @media (min-width:720px){#resonance .grid{grid-template-columns:repeat(2,1fr)}}
+		#resonance .grid {
+			display: grid;
+			gap: 20px;
+			margin-top: 8px;
+		}
+		@media (min-width: 720px) {
+			#resonance .grid {
+				grid-template-columns: repeat(2, 1fr);
+			}
+		}
 
-    #resonance .card{
-  position:relative;
-  box-sizing:border-box;
-  background:#fff;
-  border:1px solid #E9E5DE;          /* 팀원 카드 테두리 */
-  border-radius:16px;                 /* 모서리 */
-  padding:24px;                       /* 내부 여백 */
-  box-shadow:0 4px 16px rgba(0,0,0,.06); /* 기본 그림자 */
-  cursor:pointer;
-  transition:background-color .25s,transform .25s,box-shadow .25s;
-  width:100%;
-}
-/* 호버는 유지하되 톤만 살짝 통일 */
-#resonance .card:hover{
-  background:#fff8ed;
-  transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(166,124,82,.18);
-}
+		#resonance .card {
+			position: relative;
+			box-sizing: border-box;
+			background: #fff;
+			border: 1px solid #e9e5de; /* 팀원 카드 테두리 */
+			border-radius: 16px; /* 모서리 */
+			padding: 24px; /* 내부 여백 */
+			box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06); /* 기본 그림자 */
+			cursor: pointer;
+			transition: background-color 0.25s, transform 0.25s,
+				box-shadow 0.25s;
+			width: 100%;
+		}
+		/* 호버는 유지하되 톤만 살짝 통일 */
+		#resonance .card:hover {
+			background: #fff8ed;
+			transform: translateY(-2px);
+			box-shadow: 0 8px 20px rgba(166, 124, 82, 0.18);
+		}
 
-    #resonance .row{display:flex;align-items:center;gap:10px}
-    #resonance .icon{width:28px;height:28px;display:inline-grid;place-items:center;border-radius:8px;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff}
-    #resonance h3{margin:0;font-size:17px;color:var(--text)}
-    #resonance p{margin:8px 0 6px;color:var(--muted)}
-    #resonance ul{margin:6px 0 0 18px;color:var(--muted);font-size:14px}
+		#resonance .row {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+		#resonance .icon {
+			width: 28px;
+			height: 28px;
+			display: inline-grid;
+			place-items: center;
+			border-radius: 8px;
+			background: linear-gradient(135deg, #F85826, #ED3F09);
+			color: #fff;
+		}
+		#resonance h3 {
+			margin: 0;
+			font-size: 17px;
+			color: var(--text);
+		}
+		#resonance p {
+			margin: 8px 0 6px;
+			color: var(--muted);
+		}
+		#resonance ul {
+			margin: 6px 0 0 18px;
+			color: var(--muted);
+			font-size: 14px;
+		}
 
 		/* Overlay (fixed inside card) */
 		#resonance .extra {
@@ -157,277 +189,311 @@
 			border: 0;
 		}
 	</style>
-<!-- 서현준: 디자인 통일을 위해 div로 감싸고 부트스트랩 container값 넣었습니다 -->
+	<!-- 서현준: 디자인 통일을 위해 div로 감싸고 부트스트랩 container값 넣었습니다 -->
 	<div class="container py-5">
-    <header class="header">
-      <!-- 서현준: 문구 추가 -->
-      <h1 class="text-center fw-bold">마케팅. 중요하지만 어렵습니다</h1>
-      
-      <p class="sub text-center">
-        숏픽은 영상 광고가 낯선 40대 이상 자영업자부터<br>
-        처음 도전하는 청년까지 누구나 쉽게 사용할 수 있게 설계했습니다.
-      </p>
-      <br>
-    </header>
-    <!-- tabs -->
-    <nav class="tabs" role="tablist" aria-label="대상 선택">
-      <button
-        class="tab is-active"
-        role="tab"
-        aria-selected="true"
-        data-target="owner">
-        사장님용(40+)
-      </button>
-      <button
-        class="tab"
-        role="tab"
-        aria-selected="false"
-        data-target="newbie">
-        초보 마케터
-      </button>
-      <button class="tab" role="tab" aria-selected="false" data-target="all">
-        모두 보기
-      </button>
-    </nav>
-    <div class="panels">
-      <!-- Panel: owner -->
-      <div class="panel" data-panel="owner">
-        <div class="grid">
-          <article class="card" role="listitem" data-key="owner-pain">
-            <div class="row">
-              <span class="icon">!</span>
-              <h3>사장님 고민</h3>
-            </div>
-            <p>영상은 어렵고 광고비는 부담. 앱은 복잡합니다.</p>
-            <ul>
-              <li>촬영·편집 자신 없음</li>
-              <li>소액으로 효과 내고 싶음</li>
-              <li>예약·전화만 연결되면 됨</li>
-            </ul>
-            <div
-              class="extra"
-              role="dialog"
-              aria-label="사장님 고민 상세">
-              <span class="close" aria-label="닫기">✕</span>
-              <div
-                class="switch"
-                role="tablist"
-                aria-label="세부 설명">
-                <button
-                  class="pill"
-                  role="tab"
-                  data-info="왜"
-                  aria-pressed="true">
-                  왜?
-                </button>
-                <button
-                  class="pill"
-                  role="tab"
-                  data-info="어떻게"
-                  aria-pressed="false">
-                  어떻게?
-                </button>
-                <button
-                  class="pill"
-                  role="tab"
-                  data-info="결과"
-                  aria-pressed="false">
-                  결과
-                </button>
-              </div>
-              <div class="extra-body"></div>
-            </div>
-          </article>
-          <article class="card" role="listitem" data-key="owner-solution">
-            <div class="row">
-              <span class="icon d-inline-flex justify-content-center">★</span>
-              <h3>숏픽이 대신합니다</h3>
-            </div>
-            <p>복잡함 제거. 필요한 버튼만 남겼습니다.</p>
-            <ul>
-              <li>템플릿 선택 → 사진 업로드 → 완료</li>
-              <li>전화/톡/지도 버튼 즉시 연결</li>
-              <li>하루 예산 5천원부터</li>
-            </ul>
-            <div class="extra" role="dialog" aria-label="숏픽 상세">
-              <span class="close" aria-label="닫기">✕</span>
-              <div
-                class="switch"
-                role="tablist"
-                aria-label="세부 설명">
-                <button
-                  class="pill"
-                  role="tab"
-                  data-info="왜"
-                  aria-pressed="true">
-                  왜?
-                </button>
-                <button
-                  class="pill"
-                  role="tab"
-                  data-info="어떻게"
-                  aria-pressed="false">
-                  어떻게?
-                </button>
-                <button
-                  class="pill"
-                  role="tab"
-                  data-info="결과"
-                  aria-pressed="false">
-                  결과
-                </button>
-              </div>
-              <div class="extra-body"></div>
-            </div>
-          </article>
-        </div>
-      </div>
-      <!-- Panel: newbie -->
-      <div class="panel" data-panel="newbie" hidden>
-        <div class="grid">
-          <article class="card" role="listitem" data-key="newbie-steps">
-            <div class="row">
-              <span class="icon">✓</span>
-              <h3>초보도 3단계</h3>
-            </div>
-            <p>템플릿 → 사진/문구 → 게시.</p>
-            <ul>
-              <li>설명 풍선 가이드</li>
-              <li>저작권 안전 음악 자동</li>
-              <li>비율 자동 맞춤</li>
-            </ul>
-            <div class="extra" role="dialog" aria-label="3단계 상세">
-              <span class="close" aria-label="닫기">✕</span>
-              <div class="switch">
-                <button
-                  class="pill"
-                  data-info="왜"
-                  aria-pressed="true">
-                  왜?</button
-                ><button
-                  class="pill"
-                  data-info="어떻게"
-                  aria-pressed="false">
-                  어떻게?</button
-                ><button
-                  class="pill"
-                  data-info="결과"
-                  aria-pressed="false">
-                  결과
-                </button>
-              </div>
-              <div class="extra-body"></div>
-            </div>
-          </article>
-          <article class="card" role="listitem" data-key="newbie-boost">
-            <div class="row">
-              <span class="icon">＋</span>
-              <h3>자동 최적화</h3>
-            </div>
-            <p>좋은 시간대 추천과 문구 A/B.</p>
-            <ul>
-              <li>추천 해시태그</li>
-              <li>댓글 유도 문구</li>
-              <li>지역 키워드</li>
-            </ul>
-            <div class="extra" role="dialog" aria-label="최적화 상세">
-              <span class="close" aria-label="닫기">✕</span>
-              <div class="switch">
-                <button
-                  class="pill"
-                  data-info="왜"
-                  aria-pressed="true">
-                  왜?</button
-                ><button
-                  class="pill"
-                  data-info="어떻게"
-                  aria-pressed="false">
-                  어떻게?</button
-                ><button
-                  class="pill"
-                  data-info="결과"
-                  aria-pressed="false">
-                  결과
-                </button>
-              </div>
-              <div class="extra-body"></div>
-            </div>
-          </article>
-        </div>
-      </div>
-      <!-- Panel: all -->
-      <div class="panel" data-panel="all" hidden>
-        <div class="grid">
-          <article class="card" role="listitem" data-key="all-why">
-            <div class="row">
-              <span class="icon">→</span>
-              <h3>왜 지금 숏폼?</h3>
-            </div>
-            <p>사진 5장으로 15초. 제작·업로드 1분.</p>
-            <ul>
-              <li>저예산도 효율</li>
-              <li>지역·관심사 노출</li>
-              <li>전화/방문 유도</li>
-            </ul>
-            <div class="extra" role="dialog" aria-label="이유 상세">
-              <span class="close" aria-label="닫기">✕</span>
-              <div class="switch">
-                <button
-                  class="pill"
-                  data-info="왜"
-                  aria-pressed="true">
-                  왜?</button
-                ><button
-                  class="pill"
-                  data-info="어떻게"
-                  aria-pressed="false">
-                  어떻게?</button
-                ><button
-                  class="pill"
-                  data-info="결과"
-                  aria-pressed="false">
-                  결과
-                </button>
-              </div>
-              <div class="extra-body"></div>
-            </div>
-          </article>
-          <article class="card" role="listitem" data-key="all-how">
-            <div class="row">
-              <span class="icon">★</span>
-              <h3>어떻게 간편해지나</h3>
-            </div>
-            <p>쇼츠·릴스·틱톡· 자동영상 5분컷.</p>
-            <ul>
-              <li>전화·배달·예약 버튼</li>
-              <li>전화 연결 로그</li>
-              <li>간편 영수증</li>
-            </ul>
-            <div class="extra" role="dialog" aria-label="간편 상세">
-              <span class="close" aria-label="닫기">✕</span>
-              <div class="switch">
-                <button
-                  class="pill"
-                  data-info="왜"
-                  aria-pressed="true">
-                  왜?</button
-                ><button
-                  class="pill"
-                  data-info="어떻게"
-                  aria-pressed="false">
-                  어떻게?</button
-                ><button
-                  class="pill"
-                  data-info="결과"
-                  aria-pressed="false">
-                  결과
-                </button>
-              </div>
-              <div class="extra-body"></div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </div>
-    </section>
-  </div>
+		<header class="header">
+			<!-- 서현준: 문구 추가 -->
+			<h1 class="text-center fw-bold">마케팅. 중요하지만 어렵습니다</h1>
+
+			<p class="sub text-center">
+				숏픽은 영상 광고가 낯선 40대 이상 자영업자부터<br />
+				처음 도전하는 청년까지 누구나 쉽게 사용할 수 있게 설계했습니다.
+			</p>
+			<br />
+		</header>
+		<!-- tabs -->
+		<nav class="tabs" role="tablist" aria-label="대상 선택">
+			<button
+				class="tab is-active"
+				role="tab"
+				aria-selected="true"
+				data-target="owner">
+				사장님용(40+)
+			</button>
+			<button
+				class="tab"
+				role="tab"
+				aria-selected="false"
+				data-target="newbie">
+				초보 마케터
+			</button>
+			<button
+				class="tab"
+				role="tab"
+				aria-selected="false"
+				data-target="all">
+				모두 보기
+			</button>
+		</nav>
+		<div class="panels">
+			<!-- Panel: owner -->
+			<div class="panel" data-panel="owner">
+				<div class="grid">
+					<article class="card" role="listitem" data-key="owner-pain">
+						<div class="row">
+							<span class="icon">!</span>
+							<h3>사장님 고민</h3>
+						</div>
+						<p>영상은 어렵고 광고비는 부담. 앱은 복잡합니다.</p>
+						<ul>
+							<li>촬영·편집 자신 없음</li>
+							<li>소액으로 효과 내고 싶음</li>
+							<li>예약·전화만 연결되면 됨</li>
+						</ul>
+						<div
+							class="extra"
+							role="dialog"
+							aria-label="사장님 고민 상세">
+							<span class="close" aria-label="닫기">✕</span>
+							<div
+								class="switch"
+								role="tablist"
+								aria-label="세부 설명">
+								<button
+									class="pill"
+									role="tab"
+									data-info="왜"
+									aria-pressed="true">
+									왜?
+								</button>
+								<button
+									class="pill"
+									role="tab"
+									data-info="어떻게"
+									aria-pressed="false">
+									어떻게?
+								</button>
+								<button
+									class="pill"
+									role="tab"
+									data-info="결과"
+									aria-pressed="false">
+									결과
+								</button>
+							</div>
+							<div class="extra-body"></div>
+						</div>
+					</article>
+					<article
+						class="card"
+						role="listitem"
+						data-key="owner-solution">
+						<div class="row">
+							<span
+								class="icon d-inline-flex justify-content-center"
+								>★</span
+							>
+							<h3>숏픽이 대신합니다</h3>
+						</div>
+						<p>복잡함 제거. 필요한 버튼만 남겼습니다.</p>
+						<ul>
+							<li>템플릿 선택 → 사진 업로드 → 완료</li>
+							<li>전화/톡/지도 버튼 즉시 연결</li>
+							<li>하루 예산 5천원부터</li>
+						</ul>
+						<div class="extra" role="dialog" aria-label="숏픽 상세">
+							<span class="close" aria-label="닫기">✕</span>
+							<div
+								class="switch"
+								role="tablist"
+								aria-label="세부 설명">
+								<button
+									class="pill"
+									role="tab"
+									data-info="왜"
+									aria-pressed="true">
+									왜?
+								</button>
+								<button
+									class="pill"
+									role="tab"
+									data-info="어떻게"
+									aria-pressed="false">
+									어떻게?
+								</button>
+								<button
+									class="pill"
+									role="tab"
+									data-info="결과"
+									aria-pressed="false">
+									결과
+								</button>
+							</div>
+							<div class="extra-body"></div>
+						</div>
+					</article>
+				</div>
+			</div>
+			<!-- Panel: newbie -->
+			<div class="panel" data-panel="newbie" hidden>
+				<div class="grid">
+					<article
+						class="card"
+						role="listitem"
+						data-key="newbie-steps">
+						<div class="row">
+							<span
+								class="icon d-inline-flex justify-content-center"
+								>✓</span
+							>
+							<h3>초보도 3단계</h3>
+						</div>
+						<p>템플릿 → 사진/문구 → 게시.</p>
+						<ul>
+							<li>설명 풍선 가이드</li>
+							<li>저작권 안전 음악 자동</li>
+							<li>비율 자동 맞춤</li>
+						</ul>
+						<div
+							class="extra"
+							role="dialog"
+							aria-label="3단계 상세">
+							<span class="close" aria-label="닫기">✕</span>
+							<div class="switch">
+								<button
+									class="pill"
+									data-info="왜"
+									aria-pressed="true">
+									왜?</button
+								><button
+									class="pill"
+									data-info="어떻게"
+									aria-pressed="false">
+									어떻게?</button
+								><button
+									class="pill"
+									data-info="결과"
+									aria-pressed="false">
+									결과
+								</button>
+							</div>
+							<div class="extra-body"></div>
+						</div>
+					</article>
+					<article
+						class="card"
+						role="listitem"
+						data-key="newbie-boost">
+						<div class="row">
+							<span
+								class="icon d-inline-flex justify-content-center"
+								>＋</span
+							>
+							<h3>자동 최적화</h3>
+						</div>
+						<p>좋은 시간대 추천과 문구 A/B.</p>
+						<ul>
+							<li>추천 해시태그</li>
+							<li>댓글 유도 문구</li>
+							<li>지역 키워드</li>
+						</ul>
+						<div
+							class="extra"
+							role="dialog"
+							aria-label="최적화 상세">
+							<span class="close" aria-label="닫기">✕</span>
+							<div class="switch">
+								<button
+									class="pill"
+									data-info="왜"
+									aria-pressed="true">
+									왜?</button
+								><button
+									class="pill"
+									data-info="어떻게"
+									aria-pressed="false">
+									어떻게?</button
+								><button
+									class="pill"
+									data-info="결과"
+									aria-pressed="false">
+									결과
+								</button>
+							</div>
+							<div class="extra-body"></div>
+						</div>
+					</article>
+				</div>
+			</div>
+			<!-- Panel: all -->
+			<div class="panel" data-panel="all" hidden>
+				<div class="grid">
+					<article class="card" role="listitem" data-key="all-why">
+						<div class="row">
+							<span
+								class="icon d-inline-flex justify-content-center"
+								>→</span
+							>
+							<h3>왜 지금 숏폼?</h3>
+						</div>
+						<p>사진 5장으로 15초. 제작·업로드 1분.</p>
+						<ul>
+							<li>저예산도 효율</li>
+							<li>지역·관심사 노출</li>
+							<li>전화/방문 유도</li>
+						</ul>
+						<div class="extra" role="dialog" aria-label="이유 상세">
+							<span class="close" aria-label="닫기">✕</span>
+							<div class="switch">
+								<button
+									class="pill"
+									data-info="왜"
+									aria-pressed="true">
+									왜?</button
+								><button
+									class="pill"
+									data-info="어떻게"
+									aria-pressed="false">
+									어떻게?</button
+								><button
+									class="pill"
+									data-info="결과"
+									aria-pressed="false">
+									결과
+								</button>
+							</div>
+							<div class="extra-body"></div>
+						</div>
+					</article>
+					<article class="card" role="listitem" data-key="all-how">
+						<div class="row">
+							<span
+								class="icon d-inline-flex justify-content-center"
+								>★</span
+							>
+							<h3>어떻게 간편해지나</h3>
+						</div>
+						<p>쇼츠·릴스·틱톡· 자동영상 5분컷.</p>
+						<ul>
+							<li>전화·배달·예약 버튼</li>
+							<li>전화 연결 로그</li>
+							<li>간편 영수증</li>
+						</ul>
+						<div class="extra" role="dialog" aria-label="간편 상세">
+							<span class="close" aria-label="닫기">✕</span>
+							<div class="switch">
+								<button
+									class="pill"
+									data-info="왜"
+									aria-pressed="true">
+									왜?</button
+								><button
+									class="pill"
+									data-info="어떻게"
+									aria-pressed="false">
+									어떻게?</button
+								><button
+									class="pill"
+									data-info="결과"
+									aria-pressed="false">
+									결과
+								</button>
+							</div>
+							<div class="extra-body"></div>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
