@@ -69,16 +69,14 @@
 }
 
 #necessity .comparison-cards {
-    background: linear-gradient(135deg, #ba4e36 0%, #989093 100%);
-    border-radius: 20px;
     padding: 40px 20px;
-    color: white;
 }
 
 #necessity .comp-card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* border: 1px solid rgba(255, 255, 255, 0.2); */
+    border: 1px solid black;
     border-radius: 15px;
     transition: all 0.3s ease;
     height: 100%;

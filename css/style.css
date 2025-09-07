@@ -1,0 +1,19 @@
+* {
+	font-family: pretendard;
+}
+
+.font-color-emphasis {
+	color: #ff7042;
+}
+
+.bg-color-emphasis {
+	background-color: #ff7042;
+	color: white;
+}
+
+.bg-color-emphasis:hover,
+.bg-color-emphasis:focus,
+.bg-color-emphasis:active {
+	background-color: #f85826;
+    color: white;
+}

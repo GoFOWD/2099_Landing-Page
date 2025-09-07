@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/necessity.css">
     <link rel="stylesheet" href="../css/contactBtn.css">
+    <link rel="stylesheet" href="../css/main1.css">
 
 </head>
 
@@ -17,9 +18,10 @@
 
     </header>
     <main id="main">
+        <div id="main1"></div>
         <div id="freeTrial"></div>
-        <div id="necessity"></div>
         <div id="bond"></div>
+        <div id="necessity"></div>
         <div id="feature"></div>
         <div id="contactBtn" class="text-center mb-3"></div>
     </main>
@@ -34,6 +36,7 @@
             document.getElementById(tagId).innerHTML = data;
         }
         fetchHTML("header.html", "header");
+        fetchHTML("main1.html", "main1");
         fetchHTML("freeTrial.html", "freeTrial");
         fetchHTML("necessity.html", "necessity");
         fetchHTML("bond.html", "bond");
@@ -41,9 +44,10 @@
         fetchHTML("contactBtn.html", "contactBtn");
         fetchHTML("footer.html", "footer"); 
     </script>
-    <script src="../js/main.js"></script>
+    <script src="../js/main1.js"></script>
     <script src="../js/bond.js"></script>
     <script src="../js/necessity.js"></script>
+    <script src="../js/contactBtn.js"></script>
 </body>
 
 </html>
