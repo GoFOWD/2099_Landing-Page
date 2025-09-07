@@ -69,13 +69,19 @@
 }
 
 #necessity .comparison-cards {
+    /* 서현준: 디자인 통일을 위한 주석 처리 */
+    /* background: linear-gradient(135deg, #ba4e36 0%, #989093 100%); */
+    /* border-radius: 20px; */
+    /* color: white; */
     padding: 40px 20px;
 }
 
 #necessity .comp-card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+    /* 서현준: 디자인 통일을 위한 주석 처리 */
     /* border: 1px solid rgba(255, 255, 255, 0.2); */
+    /* 서현준: 디자인 통일을 위한 테두리 색 변경 */
     border: 1px solid black;
     border-radius: 15px;
     transition: all 0.3s ease;
