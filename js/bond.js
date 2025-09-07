@@ -1,6 +1,18 @@
 // js/resonance.js
 (function () {
   let inited = false;
+    // 카드 높이 통일
+  function equalizeHeights(panel){
+    if (!panel) return;
+    const cards = [...panel.querySelectorAll('.card')];
+    if (!cards.length) return;
+    cards.forEach(c => c.style.minHeight = '');                  // 초기화
+    requestAnimationFrame(() => {
+      const maxH = cards.reduce((m,c)=>Math.max(m, c.offsetHeight), 0);
+      cards.forEach(c => c.style.minHeight = maxH + 'px');      // 통일
+    });
+  }
+
 
   function init() {
     if (inited) return;
@@ -39,6 +51,7 @@
         p.hidden = !on;
         if (!on) p.querySelectorAll('.card.active').forEach(c => c.classList.remove('active'));
       });
+      equalizeHeights(panels.find(p => !p.hidden));
     }
     tabs.forEach(t => t.addEventListener('click', () => showPanel(t.dataset.target)));
     showPanel('owner');
@@ -61,6 +74,7 @@
 
         if (openCard && openCard !== card) openCard.classList.remove('active');
         card.classList.add('active'); openCard = card;
+        equalizeHeights(panel);
 
         const body = card.querySelector('.extra-body');
         const pills = card.querySelectorAll('.pill');
@@ -77,6 +91,7 @@
           pill.setAttribute('aria-pressed', 'true');
           const body = card.querySelector('.extra-body');
           body.textContent = (copyDeck[card.dataset.key] && copyDeck[card.dataset.key][pill.dataset.info]) || '';
+          equalizeHeights(panel);
         });
       });
     });
@@ -85,7 +100,16 @@
       if (e.key !== 'Escape') return;
       const vis = [...panels].find(p => !p.hidden);
       vis && vis.querySelectorAll('.card.active').forEach(c => c.classList.remove('active'));
+      equalizeHeights(vis);
     });
+      window.addEventListener('resize', () => {
+    const vis = panels.find(p => !p.hidden);
+    equalizeHeights(vis);
+  });
+  window.addEventListener('load', () => {
+    const vis = panels.find(p => !p.hidden);
+    equalizeHeights(vis);
+  });
   }
 
   // 1) 즉시 시도
