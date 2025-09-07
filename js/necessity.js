@@ -2,7 +2,9 @@
 const slides = document.querySelectorAll(".nSlide");
 const backgroundTexts = document.querySelectorAll(".background-text");
 const container = document.querySelector(".nStichyBody");
+const subText = document.querySelector(".nFixed");
 const totalSlides = slides.length;
+
 
 function updateSlides(index) {
     // 기존 슬라이드(카드) 로직은 그대로 유지
@@ -28,7 +30,7 @@ function updateSlides(index) {
 
     // 모든 배경 텍스트의 .active 클래스 제거
     backgroundTexts.forEach(text => text.classList.remove("active"));
-    
+
     // 현재 인덱스에 해당하는 배경 텍스트에만 .active 클래스 추가
     if (backgroundTexts[index]) {
         backgroundTexts[index].classList.add("active");
@@ -40,6 +42,11 @@ function calcIndex(progress) {
     // 진행도(0 ~ 1)를 총 슬라이드 수에 곱하여 현재 인덱스 계산
     let idx = Math.floor(progress * totalSlides);
     if (idx >= totalSlides) idx = totalSlides - 1;
+    if(progress > 0 && progress < 1){
+        subText.classList.add("active");
+    }else{
+        subText.classList.remove("active");
+    };
     return idx;
 }
 
