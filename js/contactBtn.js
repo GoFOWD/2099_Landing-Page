@@ -1,4 +1,4 @@
-function animation() {
+
 	const reviews = document.querySelectorAll(".review");
 	const musk = document.querySelector(".musk");
 
@@ -34,6 +34,5 @@ function animation() {
 		});
 	}, { threshold: 0.5 });
 	muskObserver.observe(musk);
-}
 
-setTimeout(animation, 1000);
+

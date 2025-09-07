@@ -1,4 +1,4 @@
-setTimeout(() => {
+
 	const textarea = document.getElementById("promptInput");
 	const charCount = document.getElementById("charCount");
 	const minChars = 25;
@@ -40,4 +40,4 @@ setTimeout(() => {
 			setTimeout(() => (editorSection.style.opacity = 1), 50);
 		}, 500);
 	});
-}, 1000);
+

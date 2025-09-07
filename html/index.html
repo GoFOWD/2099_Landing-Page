@@ -18,7 +18,6 @@
 
     </header>
     <main id="main">
-        <div id="main1"></div>
         <div id="freeTrial"></div>
         <div id="necessity"></div>
         <div id="bond"></div>
@@ -35,18 +34,39 @@
             const data = await response.text()
             document.getElementById(tagId).innerHTML = data;
         }
-        fetchHTML("header.html", "header");
-        fetchHTML("freeTrial.html", "freeTrial");
-        fetchHTML("necessity.html", "necessity");
-        fetchHTML("bond.html", "bond");
-        fetchHTML("feature.html", "feature");
-        fetchHTML("contactBtn.html", "contactBtn");
-        fetchHTML("footer.html", "footer"); 
+
+          function loadScripts() {
+            const scripts = [
+                "../js/bond.js",
+                "../js/necessity.js",
+                "../js/contactBtn.js",
+                "../js/freeTrial.js"  
+            ];
+
+            scripts.forEach(src => {
+                const script = document.createElement('script');
+                script.src = src;
+                document.body.appendChild(script);
+            });
+        }
+
+        // 모든 HTML을 순차적으로 로드한 후 스크립트 로드
+        async function loadAllHTML() {
+            await fetchHTML("header.html", "header");
+            await fetchHTML("freeTrial.html", "freeTrial");
+            await fetchHTML("necessity.html", "necessity");
+            await fetchHTML("bond.html", "bond");
+            await fetchHTML("feature.html", "feature");
+            await fetchHTML("contactBtn.html", "contactBtn");
+            await fetchHTML("footer.html", "footer");
+            
+            // 모든 HTML 로딩 완료 후 스크립트 실행
+            loadScripts();
+        }
+
+        // 실행
+        loadAllHTML();
     </script>
-    <script src="../js/freeTrial.js"></script>
-    <script src="../js/bond.js"></script>
-    <script src="../js/necessity.js"></script>
-    <script src="../js/contactBtn.js"></script>
 </body>
 
 </html>
