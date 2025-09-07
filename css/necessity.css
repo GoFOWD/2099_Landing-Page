@@ -10,6 +10,7 @@
     grid-template-rows: auto 1fr;
     /* 제목은 자동, 나머지는 남은 공간 */
     margin: 0 auto;
+    
     /* 항상 화면에 고정 */
 }
 
@@ -20,8 +21,6 @@
 .nStickyContent {
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
     overflow: hidden;
     position: relative;
 }
@@ -55,6 +54,18 @@
         font-size: 60px;
         font-weight: bold;
     }
+
+    /*카드 코드*/
+    #necessity .box-height {
+        height: 500px;
+    }
+
+    #necessity #necessityImage {
+        width: 10em;
+        height: 10em;
+        object-fit: contain;
+        object-position: center;
+    }
 }
 
 /* 태블릿 */
@@ -64,6 +75,18 @@
         width: 100%;
         font-size: 45px;
         font-weight: bold;
+    }
+
+    /*카드 코드*/
+    #necessity .box-height {
+        height: 300px;
+    }
+
+    #necessity #necessityImage {
+        width: 7em;
+        height: 7em;
+        object-fit: contain;
+        object-position: center;
     }
 }
 
@@ -75,6 +98,18 @@
         text-align: center;
         font-size: 30px;
         font-weight: bold;
+    }
+
+    /*카드 코드*/
+    #necessity .box-height {
+        height: 180px;
+    }
+
+    #necessity #necessityImage {
+        width: 3em;
+        height: 3em;
+        object-fit: contain;
+        object-position: center;
     }
 }
 
@@ -94,6 +129,9 @@
 /* 구역 구분 코드 종료*/
 
 /*카드 코드*/
-
+#necessity #box {
+    width: 100%;
+    height: 100%;
+}
 
 /*카드 코드 종료*/
