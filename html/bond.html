@@ -52,13 +52,220 @@
 
     #resonance .cta{display:grid;gap:10px;margin-top:16px;padding-top:12px;border-top:1px solid var(--line)}
     #resonance .btn{justify-self:start;padding:10px 16px;border-radius:10px;font-weight:700;font-size:14px;background:var(--primary);color:#fff;border:0}
+    /* 섹션 자체 위아래 여백 */
+#resonance{ padding: 32px 0; }
+
+/* 헤더/그리드의 가로 폭을 좁혀서 좌우 숨 쉬게 */
+#resonance .header,
+#resonance .grid{
+  max-width: clamp(720px, 92vw, 1040px);  /* 화면에 맞춰 유연, 최대 1040px */
+  padding: 0 24px;                         /* 좌우 내부 여백 */
+  margin: 0 auto;                          /* 가운데 정렬 */
+}
+
+/* 카드 사이 간격 더 넓게 */
+#resonance .grid{ gap: 24px; }
+/* 카드 내부 여백 + 왼쪽 정렬 */
+#resonance .card{
+  padding: 26px;
+  text-align: left;
+}
+
+/* 제목/본문 가독성 */
+#resonance h2{ font-size: 30px; line-height: 1.2; text-wrap: balance; }
+#resonance .sub{ font-size: 16px; line-height: 1.65; max-width: 70ch; }
+
+/* 카드 본문 폭을 제한해서 줄 길이 짧게 */
+#resonance .card p,
+#resonance .card ul{ max-width: 62ch; }
+
+/* 본문/목록 행간과 간격 */
+#resonance .card p{ font-size: 15px; line-height: 1.7; margin: 10px 0 8px; }
+#resonance .card ul{ line-height: 1.6; padding-left: 1.1rem; }
+#resonance .card li{ margin: 6px 0; }
+
+/* 헤더 행 정돈 */
+#resonance .row{ gap: 12px; margin-bottom: 4px; }
+#resonance .icon{ width: 30px; height: 30px; }
+/* 탭을 왼쪽 정렬 + 헤더/그리드와 같은 좌우 폭/패딩 */
+#resonance nav.tabs{
+  display:flex;
+  justify-content:flex-start !important;  /* ← 왼쪽으로 붙이기 */
+  gap:12px;
+  max-width:min(1040px, 92vw);
+  margin:12px auto 18px;                  /* 가운데 컨테이너 안에서 */
+  padding-inline:clamp(16px, 4vw, 28px);  /* 헤더/그리드와 동일 좌우 여백 */
+}
+/* ⬆ 확장: 섹션 컨테이너 폭/여백 키우기 */
+#resonance{ --max: 1280px; --padX: clamp(16px, 3vw, 40px); } /* ← 숫자만 바꿔서 쉽게 조절: 1200/1280/1400 */
+
+#resonance .header,
+#resonance nav.tabs,
+#resonance .grid{
+  max-width: min(var(--max), 96vw);   /* 화면 거의 꽉 차게 */
+  padding-inline: var(--padX);        /* 좌우 내부 여백 */
+  margin-inline: auto;                 /* 가운데 정렬 */
+}
+
+/* 카드 간격/패딩도 화면 커질수록 살짝 키우기(선택) */
+#resonance .grid{ gap: clamp(22px, 2.4vw, 36px); }
+#resonance .card{ padding: clamp(22px, 1.8vw, 32px); }
+
+/* 부트스트랩 .container가 폭을 제한할 때 깨주기 */
+#resonance .container{ width:100% !important; max-width:none !important; padding:0 !important; }
+/* --- 헤더 문장 가독성 & 자연 줄바꿈 --- */
+#resonance .sub{
+  word-break: keep-all;        /* 한국어 단어 중간 줄바꿈 금지 */
+  white-space: normal;         /* 강제 줄바꿈 제거 */
+  text-wrap: balance;          /* 줄 길이 균형(지원 브라우저에서) */
+  line-height: 1.75;
+  font-size: clamp(14px, 1.0vw + 10px, 17px);
+  max-width: 70ch;             /* 문장 폭 제한 → 읽기 쉬움 */
+  margin: 6px 0 14px;
+}
+
+/* --- '무료로 시작하기' 버튼 (진한 아이보리 톤) --- */
+#resonance .cta-start{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 9999px;
+  background: #E8DEC8;             /* 진한 아이보리 */
+  color: #2f2618;                   /* 짙은 브라운 텍스트 */
+  border: 1px solid #D6C6A6;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 6px 16px rgba(0,0,0,.07), inset 0 1px 0 rgba(255,255,255,.5);
+  transition: transform .2s, background-color .2s, box-shadow .2s;
+}
+#resonance .cta-start:hover{
+  background: #E3D3B2;
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+}
+#resonance .cta-start:active{ transform: translateY(0); }
+
+/* 모바일: 폭 줄면 자연스럽게 줄바꿈 & 버튼은 꽉 차게 */
+@media (max-width: 640px){
+  #resonance .header{ gap: 6px; }
+  #resonance .cta-start{ width: 100%; padding: 14px 18px; }
+}
+/* 한 줄 정렬 바(문장 + 버튼) */
+#resonance .subbar{
+  display:flex;
+  align-items:center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+/* 문장을 데스크톱에서 한 줄로, 넘치면 말줄임 */
+#resonance .subbar .sub{
+  margin:0;
+  white-space: nowrap;         /* 한 줄 유지 */
+  word-break: keep-all;        /* 한국어 단어 중간 분리 금지 */
+  overflow: hidden;            /* 넘치면 … 처리 */
+  text-overflow: ellipsis;
+  max-width:none;              /* 이전 제한 무시 */
+}
+
+/* 버튼은 오른쪽 끝 고정 */
+#resonance .subbar .cta-start{
+  margin-left: auto;           /* 오른쪽으로 밀기 */
+  white-space: nowrap;         /* 버튼 글자 줄바꿈 금지 */
+}
+
+/* 탭과 간격 약간 띄우기 */
+#resonance nav.tabs{ margin-top: 16px; }
+
+/* 모바일 최적화: 문장은 자동 줄바꿈, 버튼은 아래로 */
+@media (max-width: 768px){
+  #resonance .subbar{
+    flex-wrap: wrap;           /* 줄바꿈 허용 */
+    gap: 10px 12px;
+  }
+  #resonance .subbar .sub{
+    white-space: normal;       /* 모바일에선 자연 줄바꿈 */
+  }
+  #resonance .subbar .cta-start{
+    margin-left: 0;
+    width: 100%;               /* 모바일은 가로 꽉 차게 */
+    justify-content: center;
+    padding: 14px 18px;
+  }
+}
+/* 섹션 상단에 은은한 골드톤 그라데이션 배경 띠 */
+#resonance{ position: relative; }
+#resonance::before{
+  content:"";
+  position:absolute; inset:0 0 auto 0; height:120px;
+  background: linear-gradient(180deg, rgba(184,149,107,.25), rgba(184,149,107,0));
+  pointer-events:none;
+}
+
+/* CTA 버튼에 애로우 + 샤인 */
+#resonance .cta-start{
+  position:relative; padding-right:48px;
+}
+#resonance .cta-start::after{
+  content:"→"; position:absolute; right:18px; top:50%; transform:translateY(-50%);
+  font-weight:900; opacity:.85; transition:transform .25s ease;
+}
+#resonance .cta-start:hover::after{ transform:translate(4px, -50%); }
+#resonance .cta-start::before{
+  content:""; position:absolute; inset:0; border-radius:9999px;
+  background:linear-gradient(90deg, rgba(255,255,255,.25), transparent 60%);
+  transform:skewX(-20deg) translateX(-120%); transition:transform .6s ease;
+}
+#resonance .cta-start:hover::before{ transform:skewX(-20deg) translateX(180%); }
+
+/* 탭: 활성 탭 하단 강조 + 살짝 그림자 */
+#resonance .tab{ box-shadow:inset 0 -2px 0 rgba(0,0,0,0); }
+#resonance .tab.is-active{
+  box-shadow: inset 0 -2px 0 #b8956b, 0 4px 12px rgba(184,149,107,.18);
+}
+
+/* 카드: 등장 애니메이션 & 아이콘 뱃지 살짝 입체감 */
+#resonance .card{
+  opacity:0; transform: translateY(8px);
+  transition: opacity .45s ease, transform .45s ease, box-shadow .25s ease;
+}
+#resonance .card.reveal{ opacity:1; transform:translateY(0); }
+#resonance .icon{
+  box-shadow: 0 4px 12px rgba(184,149,107,.22), inset 0 0 0 1px rgba(255,255,255,.55);
+}
+
+/* 리스트 불릿을 커스텀 체크로 */
+#resonance .card ul{ list-style:none; padding-left:0; margin-top:10px; }
+#resonance .card li{ position:relative; padding-left:22px; margin:8px 0; }
+#resonance .card li::before{
+  content:""; position:absolute; left:0; top:.65em; width:10px; height:10px; border-radius:50%;
+  background:#b8956b; box-shadow:0 0 0 3px rgba(184,149,107,.15);
+  transform: translateY(-50%);
+}
+/* 카드 항상 보이게(효과 비활성화) */
+#resonance .card{ opacity:1 !important; transform:none !important; }
+
+
+
+
+
   </style>
 
   <header class="header">
-    <div class="eyebrow">STEP 3</div>
-    <h2 id="resonance-title">공감대 형성</h2>
-    <p class="sub">숏픽은 영상 광고가 낯선 40대 이상 자영업자부터, 처음 도전하는 청년까지 누구나 쉽게 사용할 수 있게 설계했습니다.</p>
-  </header>
+  <div class="eyebrow">STEP 3</div>
+  <h2 id="resonance-title">숏픽과 함께 광고의 세계로</h2>
+
+  <div class="subbar">
+    <p class="sub" id="resonance-sub">
+      숏픽은 영상 광고가 낯선 40대 이상 자영업자부터, 처음 도전하는 청년까지 누구나 쉽게 사용할 수 있게 설계했습니다.
+    </p>
+    <a href="#freeTrial" class="cta-start" aria-label="무료로 시작하기">무료로 시작하기</a>
+  </div>
+</header>
+
+
 
   <!-- tabs -->
   <nav class="tabs" role="tablist" aria-label="대상 선택">
