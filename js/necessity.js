@@ -148,6 +148,8 @@ window.addEventListener("scroll", () => {
     updateSlides(index);
 });
 
+
+
 // 초기화 실행
 console.log('necessity.js 로드됨 (방법 3 - Intersection Observer)');
 initNecessityAnimations();
