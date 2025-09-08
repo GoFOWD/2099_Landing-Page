@@ -2,7 +2,7 @@ body {
 	height: 800px;
 }
 
-form label {
+#signup-form label {
 	margin-top: 2rem;
 }
 

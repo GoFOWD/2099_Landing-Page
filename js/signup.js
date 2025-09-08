@@ -1,6 +1,6 @@
 const signup = document.querySelector("#signup-container");
 const welcome = document.querySelector("#welcome-container");
-const form = document.querySelector("#form");
+const signupForm = document.querySelector("#signup-form");
 const userPasswordInput = document.querySelector("#user-password");
 const userPasswordInputCheck = document.querySelector("#user-password-check");
 const signUpBtn = document.querySelector("#signup-btn");
@@ -8,13 +8,13 @@ const patternHelp = document.querySelector("#pattern-help");
 const wrongMessage = document.querySelector("#wrong-message");
 
 // submit되면 회원가임 검증
-form.addEventListener("submit", event => {
+signupForm.addEventListener("submit", event => {
     // 비밀 번호 유효성 객체 생성
 	const pattern = new RegExp("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}");;
 	
 
     // 브라우저 기본 검증을 먼저 통과시키기
-	if (!form.checkValidity()) {
+	if (!signupForm.checkValidity()) {
 		return; // 이름, 이메일 입력 안하면 밑에 로직 실행 안하고 종료
 	}
 
