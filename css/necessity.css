@@ -136,6 +136,7 @@
     #necessity #necessityImage {
         width: 7em;
         height: 7em;
+        margin: 45px;
     }
 
     .nFixed {
@@ -173,6 +174,7 @@
     #necessity #necessityImage {
         width: 3em;
         height: 3em;
+        margin: 20px;
     }
 
     .nFixed {
