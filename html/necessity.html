@@ -5,10 +5,10 @@
             todo 1 : 내가 작성한 코드의 내용이 전부 지나가기 전까지, 현재 화면에 가득차서 넘어가지 않는 것처럼 보이는 연출
         -->
         <div class="nSticky col-11">
-            <h2 id="nHeadText" class="pt-5 pb-3">
-                광고, 숏픽으로 하면 <br>
-                가장 좋은 이유.
-            </h2>
+            <div style="text-align: center; width: 100%;">
+                <h2 class="fw-bold text-body-emphasis">대표님의 서비스를 업그레이드 하세요</h2>
+                <p>숏픽을 이용해 마케팅 비용을 최소화 하여<br>대표님의 서비스에 투자하세요</p>
+            </div>
             <!--슬라이드 카드 등록-->
             <div class="nStickyContent">
                 <div id="card" class="col d-flex flex-column gap-2 nSlide">
@@ -29,6 +29,7 @@
                         <!-- 카드 이미지 변경-->
                         <div id="cardImageDiv" class="col-3 align-self-end justify-content-end m-2">
                             <img id="necessityImage" src="../images/testImage.png">
+
                         </div>
                     </div>
                 </div>
@@ -95,13 +96,118 @@
                         </div>
                     </div>
                 </div>
-                
-
-
             </div>
         </div>
     </div>
     <div class="nFixed">
         <img class="nLogo" src="../images/숏픽로고.PNG">
     </div>
+
+    <!--두번째 파트 타 어플과의 비교-->
+    <!--비교 카드들-->
+    <div class="comparison-cards mb-3">
+        <div class="text-center mb-4">
+            <h3 class="fw-bold mb-2">숏픽이 왜 최고의 선택인지 확인해보세요</h3>
+        </div>
+
+        <div class="row g-4">
+            <!-- 숏픽 카드 -->
+            <div class="col-md-6">
+                <div class="comp-card winner-card p-4">
+                    <div class="winner-badge">BEST!</div>
+                    <div class="app-icon shortpick-icon">⚡</div>
+                    <h4 class="text-center mb-4">숏픽</h4>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span>생성 속도</span>
+                            <span class="fw-bold">5초</span>
+                        </div>
+                        <div class="metric-bar">
+                            <div class="metric-fill shortpick-fill" data-width="95%"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span>비용 절약</span>
+                            <span class="fw-bold">70만원+</span>
+                        </div>
+                        <div class="metric-bar">
+                            <div class="metric-fill shortpick-fill" data-width="90%"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span>사용 편의성</span>
+                            <span class="fw-bold">95%</span>
+                        </div>
+                        <div class="metric-bar">
+                            <div class="metric-fill shortpick-fill" data-width="95%"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span>품질 만족도</span>
+                            <span class="fw-bold">98%</span>
+                        </div>
+                        <div class="metric-bar">
+                            <div class="metric-fill shortpick-fill" data-width="98%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 경쟁사 카드 -->
+            <div class="col-md-6">
+                <div class="comp-card p-4">
+                    <div class="app-icon competitor-icon">📱</div>
+                    <h4 class="text-center mb-4">타 앱들</h4>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span>생성 속도</span>
+                            <span class="fw-bold">30분+</span>
+                        </div>
+                        <div class="metric-bar">
+                            <div class="metric-fill competitor-fill" data-width="15%"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span>비용 절약</span>
+                            <span class="fw-bold">제한적</span>
+                        </div>
+                        <div class="metric-bar">
+                            <div class="metric-fill competitor-fill" data-width="25%"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span>사용 편의성</span>
+                            <span class="fw-bold">65%</span>
+                        </div>
+                        <div class="metric-bar">
+                            <div class="metric-fill competitor-fill" data-width="65%"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span>품질 만족도</span>
+                            <span class="fw-bold">72%</span>
+                        </div>
+                        <div class="metric-bar">
+                            <div class="metric-fill competitor-fill" data-width="72%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </main>
+<script src="../assets/dist/js/bootstrap.bundle.min.js" class="astro-vvvwv3sm"></script>

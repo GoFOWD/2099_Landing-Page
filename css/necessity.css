@@ -207,13 +207,13 @@
     align-content: center;
 }
 
-    #necessity .card-title {
-        font-weight: 700;
-    }
+#necessity .card-title {
+    font-weight: 700;
+}
 
-    #necessity .cardSubTitle {
-        font-weight: 500;
-    }
+#necessity .cardSubTitle {
+    font-weight: 500;
+}
 
 #necessity #necessityImage {
     object-fit: contain;
@@ -224,3 +224,102 @@
 }
 
 /*카드 코드 종료*/
+
+
+/*경쟁사 비교*/
+#necessity .comparison-cards {
+    /* 서현준: 디자인 통일을 위한 주석 처리 */
+    /* background: linear-gradient(135deg, #ba4e36 0%, #989093 100%); */
+    /* border-radius: 20px; */
+    /* color: white; */
+    padding: 40px 20px;
+}
+
+#necessity .comp-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    /* 서현준: 디자인 통일을 위한 주석 처리 */
+    /* border: 1px solid rgba(255, 255, 255, 0.2); */
+    /* 서현준: 디자인 통일을 위한 테두리 색 변경 */
+    border: 1px solid black;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    height: 100%;
+    min-height: 300px;
+}
+
+#necessity .comp-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+#necessity .winner-card {
+    background: linear-gradient(135deg, #ea7e66 0%, #a24b76 100%);
+    border: 2px solid #00ff88;
+    position: relative;
+}
+
+#necessity .winner-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #00ff88;
+    color: #000;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: bold;
+    transform: rotate(15deg);
+}
+
+#necessity .metric-bar {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    height: 6px;
+    margin: 8px 0;
+    overflow: hidden;
+}
+
+#necessity .metric-fill {
+    height: 100%;
+    border-radius: 8px;
+    transition: width 2s ease-in-out;
+    width: 0;
+}
+
+#necessity .shortpick-fill {
+    background: linear-gradient(90deg, #00ff88, #ea7e66);
+}
+
+#necessity .competitor-fill {
+    background: linear-gradient(90deg, #777777, #a2a2a2);
+}
+
+#necessity .app-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin: 0 auto 15px;
+}
+
+#necessity .shortpick-icon {
+    background: linear-gradient(135deg, #00ff88, #00c6ff);
+    color: white;
+}
+
+#necessity .competitor-icon {
+    background: linear-gradient(135deg, #ff6b6b, #ffa726);
+    color: white;
+}
+
+
+@media (max-width: 768px) {
+    .comp-card {
+        margin-bottom: 20px;
+    }
+}
