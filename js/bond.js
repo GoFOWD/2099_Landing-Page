@@ -1,6 +1,18 @@
 // js/resonance.js
 (function () {
   let inited = false;
+    // 카드 높이 통일
+  function equalizeHeights(panel){
+    if (!panel) return;
+    const cards = [...panel.querySelectorAll('.card')];
+    if (!cards.length) return;
+    cards.forEach(c => c.style.minHeight = '');                  // 초기화
+    requestAnimationFrame(() => {
+      const maxH = cards.reduce((m,c)=>Math.max(m, c.offsetHeight), 0);
+      cards.forEach(c => c.style.minHeight = maxH + 'px');      // 통일
+    });
+  }
+
 
   function init() {
     if (inited) return;
@@ -39,6 +51,7 @@
         p.hidden = !on;
         if (!on) p.querySelectorAll('.card.active').forEach(c => c.classList.remove('active'));
       });
+      equalizeHeights(panels.find(p => !p.hidden));
     }
     tabs.forEach(t => t.addEventListener('click', () => showPanel(t.dataset.target)));
     showPanel('owner');
@@ -61,6 +74,7 @@
 
         if (openCard && openCard !== card) openCard.classList.remove('active');
         card.classList.add('active'); openCard = card;
+        equalizeHeights(panel);
 
         const body = card.querySelector('.extra-body');
         const pills = card.querySelectorAll('.pill');
@@ -77,6 +91,7 @@
           pill.setAttribute('aria-pressed', 'true');
           const body = card.querySelector('.extra-body');
           body.textContent = (copyDeck[card.dataset.key] && copyDeck[card.dataset.key][pill.dataset.info]) || '';
+          equalizeHeights(panel);
         });
       });
     });
@@ -85,7 +100,16 @@
       if (e.key !== 'Escape') return;
       const vis = [...panels].find(p => !p.hidden);
       vis && vis.querySelectorAll('.card.active').forEach(c => c.classList.remove('active'));
+      equalizeHeights(vis);
     });
+      window.addEventListener('resize', () => {
+    const vis = panels.find(p => !p.hidden);
+    equalizeHeights(vis);
+  });
+  window.addEventListener('load', () => {
+    const vis = panels.find(p => !p.hidden);
+    equalizeHeights(vis);
+  });
   }
 
   // 1) 즉시 시도
@@ -95,3 +119,43 @@
     if (!inited && document.getElementById('resonance')) init();
   }).observe(document.documentElement, { childList: true, subtree: true });
 })();
+// 카드가 화면에 들어오면 reveal 클래스 부여
+(function(){
+  function mountReveal(){
+    const cards = document.querySelectorAll('#resonance .card');
+    if (!cards.length) return;
+    const io = new IntersectionObserver((ents)=>{
+      ents.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('reveal'); io.unobserve(e.target); }
+      });
+    }, { threshold: .12 });
+    cards.forEach(c=>io.observe(c));
+  }
+  window.addEventListener('load', mountReveal);
+})();
+// 주입된 뒤 나타나는 카드들도 모두 reveal 처리
+(function(){
+  const seen = new WeakSet();
+  const io = new IntersectionObserver((ents)=>{
+    ents.forEach(e=>{
+      if (e.isIntersecting) {
+        e.target.classList.add('reveal');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: .12 });
+
+  function mountReveal(){
+    document.querySelectorAll('#resonance .card').forEach(card=>{
+      if (seen.has(card)) return;
+      card.classList.add('reveal-setup'); // 효과 대상만 준비
+      io.observe(card);
+      seen.add(card);
+    });
+  }
+
+  // 처음 + 동적 주입 모두 대응
+  window.addEventListener('load', mountReveal);
+  new MutationObserver(mountReveal).observe(document.documentElement, { childList:true, subtree:true });
+})();
+
