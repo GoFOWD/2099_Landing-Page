@@ -119,3 +119,43 @@
     if (!inited && document.getElementById('resonance')) init();
   }).observe(document.documentElement, { childList: true, subtree: true });
 })();
+// 카드가 화면에 들어오면 reveal 클래스 부여
+(function(){
+  function mountReveal(){
+    const cards = document.querySelectorAll('#resonance .card');
+    if (!cards.length) return;
+    const io = new IntersectionObserver((ents)=>{
+      ents.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('reveal'); io.unobserve(e.target); }
+      });
+    }, { threshold: .12 });
+    cards.forEach(c=>io.observe(c));
+  }
+  window.addEventListener('load', mountReveal);
+})();
+// 주입된 뒤 나타나는 카드들도 모두 reveal 처리
+(function(){
+  const seen = new WeakSet();
+  const io = new IntersectionObserver((ents)=>{
+    ents.forEach(e=>{
+      if (e.isIntersecting) {
+        e.target.classList.add('reveal');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: .12 });
+
+  function mountReveal(){
+    document.querySelectorAll('#resonance .card').forEach(card=>{
+      if (seen.has(card)) return;
+      card.classList.add('reveal-setup'); // 효과 대상만 준비
+      io.observe(card);
+      seen.add(card);
+    });
+  }
+
+  // 처음 + 동적 주입 모두 대응
+  window.addEventListener('load', mountReveal);
+  new MutationObserver(mountReveal).observe(document.documentElement, { childList:true, subtree:true });
+})();
+
