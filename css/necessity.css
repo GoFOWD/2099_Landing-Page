@@ -25,6 +25,8 @@
 .nStickyContent {
     width: 100%;
     display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
     position: relative;
 }
@@ -35,6 +37,7 @@
     font-size: 1rem;
     opacity: 0;
     width: 100%;
+    max-width: 1250px;
     height: 100%;
     transform: translateX(100%);
     transition: all 0.5s ease-out;
@@ -53,7 +56,8 @@
 
 .nFixed {
     width: 100%;
-    position: fixed;
+    background-color: white;
+    position: sticky;
     text-align: center;
     opacity: 0;
 }
@@ -103,12 +107,12 @@
     }
 
     #necessity #necessityImage {
-        width: 10em;
-        height: 10em;
+        width: 7em;
+        height: 7em;
     }
 
     .nFixed {
-        top: 900px;
+        top: 850px;
     }
 
     .nLogo {
@@ -131,12 +135,13 @@
     }
 
     #necessity #necessityImage {
-        width: 7em;
-        height: 7em;
+        width: 5em;
+        height: 5em;
+        margin: 45px;
     }
 
     .nFixed {
-        top: 800px;
+        top: 750px;
     }
 
     .nLogo {
@@ -170,6 +175,7 @@
     #necessity #necessityImage {
         width: 3em;
         height: 3em;
+        margin: 20px;
     }
 
     .nFixed {
@@ -233,19 +239,27 @@
     /* border-radius: 20px; */
     /* color: white; */
     padding: 40px 20px;
+
+}
+
+/* 카드 컨테이너를 중앙으로 모음 */
+#necessity .comparison-cards .row {
+    justify-content: center;
+    max-width: 1200px;
+    /* 전체 컨테이너 최대 너비 */
+    margin: 0 auto;
 }
 
 #necessity .comp-card {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    /* 서현준: 디자인 통일을 위한 주석 처리 */
-    /* border: 1px solid rgba(255, 255, 255, 0.2); */
-    /* 서현준: 디자인 통일을 위한 테두리 색 변경 */
     border: 1px solid black;
     border-radius: 15px;
     transition: all 0.3s ease;
     height: 100%;
     min-height: 300px;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 #necessity .comp-card:hover {
