@@ -13,7 +13,7 @@
 		<a class="navbar-brand mx-auto" href="#"
 			><img id="logo-image" src="../images/숏픽로고.PNG" width="60"
 		/></a>
-		<button class="btn d-md-none">시작하기</button>
+		<button id="mobile-freeStartBtn" class="btn d-md-none">시작하기</button>
 		<div class="collapse navbar-collapse" id="navbarsExample04">
 			<ul class="navbar-nav me-auto mb-2 mb-md-0">
 				<li class="nav-item dropdown">
@@ -96,34 +96,89 @@
 				</li>
 			</ul>
 			<!-- 로그인 버튼 - 모달 트리거 -->
-			<button type="button" class="btn btn-light mx-2 text-light-emphasis" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-			로그인
+			<button
+				id="headerLogin"
+				type="button"
+				class="btn btn-light mx-2 text-light-emphasis"
+				data-bs-toggle="modal"
+				data-bs-target="#staticBackdrop">
+				로그인
 			</button>
+			<!-- 로그인시 사용자 이름 -->
+			<div id="loginUser-name" class="px-3 text-light-emphasis d-none"></div>
 			<!-- 로그인 버튼 누르면 나오는 모달 -->
-			<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<form>
-						<div class="mb-3">
-							<label for="exampleFormControlInput1" class="form-label">이메일</label>
-							<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-							<label for="inputPassword5" class="form-label mt-3">Password</label>
-							<input type="password" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+			<div
+				class="modal fade"
+				id="staticBackdrop"
+				data-bs-backdrop="static"
+				data-bs-keyboard="false"
+				tabindex="-1"
+				aria-labelledby="staticBackdropLabel"
+				aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"></button>
 						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-light" data-bs-dismiss="modal">로그인</button>
-					<button type="button" class="btn bg-color-emphasis">회원가입</button>
-				</div>
+						<div class="modal-body">
+							<form id="login-form">
+								<div class="mb-3">
+									<label for="loginEmail" class="form-label"
+										>이메일</label
+									>
+									<input
+										type="email"
+										class="form-control"
+										id="loginEmail"
+										placeholder="name@example.com"
+										required />
+									<label
+										for="loginPassword"
+										class="form-label mt-3"
+										>비밀번호</label
+									>
+									<input
+										type="password"
+										id="loginPassword"
+										class="form-control"
+										aria-describedby="passwordHelpBlock"
+										required />
+									<div
+										id="notEnrollMsg"
+										class="mt-3 text-danger d-none">
+										등록되지 않은 사용자 입니다
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button
+								id="login"
+								type="submit"
+								form="login-form"
+								class="btn btn-light"
+							>
+								로그인
+							</button>
+							<a href="signup.html"
+								><button
+									type="button"
+									id="sign-up"
+									class="btn bg-color-emphasis">
+									회원가입
+								</button></a
+							>
+						</div>
+					</div>
 				</div>
 			</div>
-			</div>
-			<button class="btn bg-color-emphasis">무료로 시작하기</button>
+			<button id="freeStartBtn" class="btn bg-color-emphasis">
+				무료로 시작하기
+			</button>
 		</div>
 	</div>
 </nav>
