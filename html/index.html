@@ -3,38 +3,44 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
     <title>팀_2099_LANDING-PAGE_프로젝트</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/necessity.css">
     <link rel="stylesheet" href="../css/contactBtn.css">
+    <link rel="stylesheet" href="../css/freeTrial.css">
+
 </head>
 
 <body>
-    <header id="header"></header>
+    <header id="header">
+
+    </header>
     <main id="main">
         <div id="freeTrial"></div>
         <div id="necessity"></div>
         <div id="bond"></div>
         <div id="feature"></div>
-        <div id="contactBtn" class="text-center mb-3"></div>
+        <div id="contactBtn" class="text-center mb-3"></div>ㅏ자미ㅏ
     </main>
-    <footer id="footer"></footer>
-    
+    <footer id="footer">
+
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         async function fetchHTML(fileName, tagId) {
             const response = await fetch(fileName);
-            const data = await response.text();
+            const data = await response.text()
             document.getElementById(tagId).innerHTML = data;
         }
 
         function loadScripts() {
             const scripts = [
-                "../js/main.js",
                 "../js/bond.js",
-                "../js/necessity.js"
+                "../js/necessity.js",
+                "../js/contactBtn.js",
+                "../js/freeTrial.js"
             ];
 
             scripts.forEach(src => {
@@ -53,7 +59,7 @@
             await fetchHTML("feature.html", "feature");
             await fetchHTML("contactBtn.html", "contactBtn");
             await fetchHTML("footer.html", "footer");
-            
+
             // 모든 HTML 로딩 완료 후 스크립트 실행
             loadScripts();
         }

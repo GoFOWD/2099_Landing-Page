@@ -1,3 +1,35 @@
+/* 멘트 고정 */
+.ment {
+  position: sticky;
+  top: 400px;
+  bottom: 500px;
+  z-index: 1000;
+}
+
+
+/* 리뷰들 애니메이션 */
+#reviews {
+  background-color: #fff;
+}
+
+.musk {
+  opacity: 0;
+  transition: all 4s;
+  position: relative;
+}
+
+
+.review {
+  box-shadow: 2px 2px 5px #ff7042;
+  border-radius: 20px;
+  width: 500px;
+  margin: 100px auto;
+  position: relative;
+  opacity: 0;
+  transition: all 3s;
+}
+
+/* 파트너사 애니메이션 */
 #logo_scroll-container {
   overflow: hidden;
   width: 100%;
@@ -6,19 +38,25 @@
 
 #logo_scroll-track {
   display: flex; 
-  flex: 0 0 150px;
-  gap: 10rem; 
-  animation: marquee-scroll 20s linear infinite; 
+  gap: 20rem; 
+  animation: infinite-scroll 20s linear infinite; 
   will-change: transform;
 }
 
-.logo_scroll-track div {
+#logo_scroll-track div {
   display: flex;
-  flex: 0 0 150px;
+  align-items: center;
 }
 
-@keyframes marquee-scroll {
+#logo_scroll-track div span {
+  margin: 0 5px;
+}
+
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
   to {
-    transform: translateX(-50%);
+    transform: translateX(-100%);
   }
 }
