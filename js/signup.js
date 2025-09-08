@@ -58,14 +58,6 @@ signupForm.addEventListener("submit", event => {
 	const userEmail = document.querySelector("#user-email").value.trim();
 	const userPassword = document.querySelector("#user-password").value.trim();
 	userInfoStorage(userName, userEmail, userPassword);
-
-	//홈 화면 로그인 버튼 없애기
-	const headerLogin = document.querySelector("#headerLogin");
-	const loginUserName = document.querySelector("#loginUser-name");
-
-	headerLogin.classList.add("d-none");
-	loginUserName.classList.remove("d-none");
-	loginUserName.textContent = `안녕하세요 ${userName}님!`;
 });
 
 // 사용자 정보 localstorage에 저장하는 함수

@@ -46,7 +46,7 @@ loginForm.addEventListener("submit", (event) => {
         const modalObj = bootstrap.Modal.getInstance(modal);
         modalObj.hide();
         // 로그인 버튼 없애고 유저 이름 나오기
-        const headerLogin = document.querySelector('#headerLogin');
+        const headerLogin = document.querySelector('#header-login');
         const loginUserName = document.querySelector('#loginUser-name');
 
         headerLogin.classList.add('d-none');
