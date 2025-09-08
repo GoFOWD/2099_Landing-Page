@@ -9,3 +9,4 @@ mobileFreeStartBtn.addEventListener("click", () => {
 freeStartBtn.addEventListener("click", () => {
     textArea.focus();
 })
+
