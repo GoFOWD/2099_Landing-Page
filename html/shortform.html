@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숏폼 생성 - 숏픽</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* 히어로 섹션 - 아이보리 */
+        .shortform-hero {
+            background: linear-gradient(135deg, #f5f5dc 0%, #f0f0e6 100%);
+            color: #8b7355;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shortform-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .shortform-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .shortform-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(139, 115, 85, 0.2);
+            color: #6b5b47;
+        }
+        
+        .shortform-hero p {
+            font-size: 1.25rem;
+            opacity: 0.8;
+            margin-bottom: 0;
+            color: #8b7355;
+        }
+        
+        /* 과정 섹션 - 모카무스 */
+        .process-section {
+            padding: 80px 0;
+            background: #f5f1eb;
+        }
+        
+        .process-card {
+            background: #fefefe;
+            border: 1px solid #a47864;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(164, 120, 100, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .process-card:hover {
+            box-shadow: 0 8px 25px rgba(164, 120, 100, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .process-header {
+            background: linear-gradient(135deg, #a47864, #8b6f47);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .process-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .process-header .step-number {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+        
+        .process-content {
+            padding: 30px;
+        }
+        
+        .required-info {
+            background: #f7f3f0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #a47864;
+        }
+        
+        .required-info h5 {
+            color: #a47864;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .info-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .info-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .info-list li i {
+            color: #a47864;
+            margin-right: 15px;
+            width: 20px;
+        }
+        
+        .info-list li strong {
+            color: #a47864;
+            margin-right: 10px;
+            min-width: 120px;
+        }
+        
+        .feature-highlight {
+            background: #fff8e1;
+            border: 1px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-highlight h6 {
+            color: #f57c00;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .feature-highlight p {
+            color: #e65100;
+            margin-bottom: 0;
+        }
+        
+        .step-detail {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .step-detail h6 {
+            color: #a47864;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .step-detail p {
+            color: #8b6f47;
+            margin-bottom: 0;
+        }
+        
+        /* 결과 섹션 */
+        .result-section {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .result-item {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .result-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #a47864;
+            margin-bottom: 10px;
+        }
+        
+        .result-label {
+            font-size: 1.1rem;
+            color: #8b6f47;
+            font-weight: 600;
+        }
+        
+        /* 문의 섹션 - 아이보리 */
+        .contact-section {
+            background: linear-gradient(135deg, #f5f5dc 0%, #f0f0e6 100%);
+            color: #6b5b47;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .contact-section h3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 196, 168, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(139, 115, 85, 0.15);
+        }
+        
+        .contact-card h5 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card p {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-card small {
+            opacity: 0.8;
+        }
+        
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .shortform-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .shortform-hero p {
+                font-size: 1.1rem;
+            }
+            
+            .process-content {
+                padding: 20px;
+            }
+            
+            .result-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header id="header"></header>
+    
+    <!-- 히어로 섹션 -->
+    <section class="shortform-hero">
+        <div class="container">
+            <h1 class="display-4 fw-bold mb-4">숏폼 생성</h1>
+            <p class="lead">AI가 당신의 아이디어를 15초 숏폼으로 완성합니다</p>
+        </div>
+    </section>
+    
+    <!-- 필수 입력 정보 섹션 -->
+    <section class="py-5" style="background: white;">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold" style="color: #a47864;">필수 입력 정보</h2>
+                <p class="lead" style="color: #8b6f47;">이 정보들만 입력하면 AI가 완벽한 숏폼을 만들어드립니다</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="required-info">
+                        <h5><i class="fas fa-edit me-2"></i>기본 정보</h5>
+                        <ul class="info-list">
+                            <li>
+                                <i class="fas fa-bullseye"></i>
+                                <strong>목적:</strong> 브랜드 홍보, 제품 판매, 고객 유치 등
+                            </li>
+                            <li>
+                                <i class="fas fa-users"></i>
+                                <strong>타겟 고객:</strong> 연령대, 성별, 관심사, 소비 패턴
+                            </li>
+                            <li>
+                                <i class="fas fa-clock"></i>
+                                <strong>영상 길이:</strong> 15초, 30초, 60초 중 선택
+                            </li>
+                            <li>
+                                <i class="fas fa-palette"></i>
+                                <strong>브랜드 컬러:</strong> 주요 색상 2-3개 (자동 추출 가능)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="required-info">
+                        <h5><i class="fas fa-video me-2"></i>콘텐츠 정보</h5>
+                        <ul class="info-list">
+                            <li>
+                                <i class="fas fa-comment-dots"></i>
+                                <strong>핵심 메시지:</strong> 15초 안에 전달할 메인 포인트
+                            </li>
+                            <li>
+                                <i class="fas fa-image"></i>
+                                <strong>이미지/영상:</strong> 업로드할 소스 파일 (선택사항)
+                            </li>
+                            <li>
+                                <i class="fas fa-microphone"></i>
+                                <strong>음성 스타일:</strong> 남성/여성, 나이대, 톤앤매너
+                            </li>
+                            <li>
+                                <i class="fas fa-music"></i>
+                                <strong>배경음악:</strong> 장르, 분위기, 볼륨 레벨
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 생성 과정 섹션 -->
+    <section class="process-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold" style="color: #a47864;">숏폼 생성 과정</h2>
+                <p class="lead" style="color: #8b6f47;">단 3단계로 완성되는 간단한 프로세스</p>
+            </div>
+            
+            <!-- 1단계 -->
+            <div class="mb-4">
+                <div class="process-card">
+                    <div class="process-header">
+                        <h3><i class="fas fa-keyboard me-2"></i>1단계: 정보 입력</h3>
+                        <p class="step-number">Step 1: Information Input</p>
+                    </div>
+                    <div class="process-content">
+                        <div class="step-detail">
+                            <h6>📝 텍스트 입력</h6>
+                            <p>위의 필수 정보들을 간단한 폼에 입력합니다. AI가 자동으로 최적화된 프롬프트로 변환합니다.</p>
+                        </div>
+                        <div class="step-detail">
+                            <h6>📁 파일 업로드</h6>
+                            <p>로고, 이미지, 영상 파일을 드래그 앤 드롭으로 업로드합니다. AI가 자동으로 브랜드 컬러를 추출합니다.</p>
+                        </div>
+                        <div class="step-detail">
+                            <h6>🎨 스타일 선택</h6>
+                            <p>업계별 템플릿과 색상 테마를 선택합니다. AI가 선택한 스타일에 맞춰 전체 디자인을 조정합니다.</p>
+                        </div>
+                        <div class="feature-highlight">
+                            <h6><i class="fas fa-lightbulb me-2"></i>AI 자동 최적화</h6>
+                            <p>입력한 정보를 바탕으로 AI가 최적의 키워드, 해시태그, 시각적 요소를 자동으로 추천합니다!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2단계 -->
+            <div class="mb-4">
+                <div class="process-card">
+                    <div class="process-header">
+                        <h3><i class="fas fa-magic me-2"></i>2단계: AI 생성</h3>
+                        <p class="step-number">Step 2: AI Generation</p>
+                    </div>
+                    <div class="process-content">
+                        <div class="step-detail">
+                            <h6>🤖 AI 스크립트 생성</h6>
+                            <p>입력된 정보를 바탕으로 15초에 최적화된 대화체 스크립트를 생성합니다. 자연스러운 한국어로 작성됩니다.</p>
+                        </div>
+                        <div class="step-detail">
+                            <h6>🎬 영상 편집</h6>
+                            <p>업로드된 이미지와 영상을 AI가 자동으로 편집하여 매력적인 숏폼을 제작합니다. 전환 효과와 타이밍을 최적화합니다.</p>
+                        </div>
+                        <div class="step-detail">
+                            <h6>🎵 음성 & 자막 생성</h6>
+                            <p>선택한 음성 스타일로 자연스러운 내레이션을 생성하고, 핵심 키워드를 강조한 자막을 자동으로 추가합니다.</p>
+                        </div>
+                        <div class="step-detail">
+                            <h6>🎨 디자인 최적화</h6>
+                            <p>브랜드 컬러와 스타일에 맞춰 텍스트, 로고, 배경을 자동으로 배치하고 색상을 조정합니다.</p>
+                        </div>
+                        <div class="feature-highlight">
+                            <h6><i class="fas fa-lightbulb me-2"></i>실시간 미리보기</h6>
+                            <p>생성 과정을 실시간으로 확인할 수 있으며, 언제든지 중단하고 수정할 수 있습니다!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3단계 -->
+            <div class="mb-4">
+                <div class="process-card">
+                    <div class="process-header">
+                        <h3><i class="fas fa-download me-2"></i>3단계: 완성 & 배포</h3>
+                        <p class="step-number">Step 3: Completion & Distribution</p>
+                    </div>
+                    <div class="process-content">
+                        <div class="step-detail">
+                            <h6>✅ 최종 검토</h6>
+                            <p>생성된 숏폼을 미리보기로 확인하고, 필요시 세부 조정을 할 수 있습니다. 음성, 자막, 타이밍을 개별적으로 수정 가능합니다.</p>
+                        </div>
+                        <div class="step-detail">
+                            <h6>📱 다중 포맷 생성</h6>
+                            <p>TikTok, Instagram Reels, YouTube Shorts에 최적화된 다양한 해상도와 비율로 자동 생성됩니다.</p>
+                        </div>
+                        <div class="step-detail">
+                            <h6>🚀 원클릭 배포</h6>
+                            <p>각 플랫폼에 바로 업로드하거나, 클라우드에 저장하여 나중에 사용할 수 있습니다. 해시태그와 설명도 자동 생성됩니다.</p>
+                        </div>
+                        <div class="step-detail">
+                            <h6>📊 성과 분석</h6>
+                            <p>업로드 후 조회수, 좋아요, 공유 수를 실시간으로 모니터링하고, 성과 데이터를 제공합니다.</p>
+                        </div>
+                        <div class="feature-highlight">
+                            <h6><i class="fas fa-lightbulb me-2"></i>무제한 수정</h6>
+                            <p>완성 후에도 언제든지 스크립트, 이미지, 음성을 수정하여 새로운 버전을 만들 수 있습니다!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 결과 통계 섹션 -->
+    <section class="result-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold" style="color: #a47864;">숏픽의 성과</h2>
+                <p class="lead" style="color: #8b6f47;">수많은 고객들이 경험한 놀라운 결과</p>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="result-item">
+                        <div class="result-number">30초</div>
+                        <div class="result-label">평균 생성 시간</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="result-item">
+                        <div class="result-number">97%</div>
+                        <div class="result-label">고객 만족도</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="result-item">
+                        <div class="result-number">10만+</div>
+                        <div class="result-label">생성된 숏폼</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="result-item">
+                        <div class="result-number">300%</div>
+                        <div class="result-label">평균 조회수 증가</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 문의 섹션 -->
+    <section class="contact-section">
+        <div class="container">
+            <h3 class="mb-4">숏폼 생성에 대해 더 알고 싶으신가요?</h3>
+            <p class="mb-4">전문가와 상담하여 맞춤형 전략을 수립해보세요.</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="contact-card">
+                        <h5>무료 체험</h5>
+                        <p>지금 바로 시작</p>
+                        <small>첫 숏폼 무료 제작</small>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="contact-card">
+                        <h5>1:1 상담</h5>
+                        <p>전문가 상담</p>
+                        <small>맞춤형 전략 수립</small>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="contact-card">
+                        <h5>데모 영상</h5>
+                        <p>생성 과정 시연</p>
+                        <small>실제 제작 과정 확인</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 푸터 -->
+    <footer id="footer"></footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 헤더와 푸터 로드
+        async function fetchHTML(fileName, tagId) {
+            const response = await fetch(fileName);
+            const data = await response.text();
+            document.getElementById(tagId).innerHTML = data;
+        }
+        
+        fetchHTML("header.html", "header");
+        fetchHTML("footer.html", "footer");
+    </script>
+</body>
+</html>
