@@ -1,4 +1,4 @@
-  <script>
+ 
     const textarea = document.getElementById('promptInput');
     const charCount = document.getElementById('charCount');
     const minChars = 25;
@@ -41,4 +41,4 @@
       document.querySelectorAll('.filter-box').forEach(b => b.classList.remove('selected'));
       el.classList.add('selected');
     }
-  </script>
+ 
