@@ -5,7 +5,7 @@
 
 .nSticky {
     position: sticky;
-    top: 0;
+    top: 50px;
     height: 100dvh;
     display: grid;
     grid-template-rows: auto 1fr;
@@ -81,7 +81,7 @@
 
     /*카드 코드*/
     #necessity .box-height {
-        height: 500px;
+        height: 400px;
     }
 
     #necessity #cardTextDiv {
@@ -112,7 +112,7 @@
     }
 
     .nFixed {
-        top: 850px;
+        top: 800px;
     }
 
     .nLogo {
@@ -131,7 +131,7 @@
 
     /*카드 코드*/
     #necessity .box-height {
-        height: 300px;
+        height: 250px;
     }
 
     #necessity #necessityImage {
@@ -203,6 +203,13 @@
 /* 구역 구분 코드 종료*/
 
 /*카드 코드*/
+.card {
+    border: 1px groove  #A1A1A1;
+    /* 두께 2px, 진한 회색 */
+    /* 모서리를 둥글게 */
+    box-shadow: 10px 10px 3px rgba(32, 32, 32, 0.3);
+}
+
 #necessity #box {
     width: 100%;
     height: 100%;

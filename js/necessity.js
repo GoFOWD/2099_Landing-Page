@@ -111,13 +111,16 @@ function updateSlides(index) {
     slides[index].style.zIndex = 3;
     slides[index].style.transform = "scale(1) translateY(0)";
     slides[index].style.opacity = 1;
+    slides[index].style.filter = `brightness(${1})`;
 
     for (let n = 1; n <= 2; n++) {
         const stackIdx = (index + n) % totalSlides;
         slides[stackIdx].classList.add(`stack${n}`);
         slides[stackIdx].style.zIndex = 3 - n;
         slides[stackIdx].style.transform = `scale(${1 - n * 0.07}) translateY(${n * 3}rem)`;
-        slides[stackIdx].style.opacity = 0.5;
+        
+        slides[stackIdx].style.opacity = 1;
+        slides[stackIdx].style.filter = `brightness(${1 - n * 0.05})`;
     }
 
     backgroundTexts.forEach(text => text.classList.remove("active"));
