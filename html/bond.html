@@ -410,6 +410,126 @@
 #resonance .cta-start:hover::before{ transform:skewX(-20deg) translateX(180%); }
 #resonance .cta-start{ padding-right:18px; }        /* 화살표용 여백 원복 */
 #resonance .cta-start::after{ content:none !important; }  /* 화살표 제거 */
+/* ── 오버레이 카드 고급화 ─────────────────────────── */
+#resonance .extra{
+  background: linear-gradient(180deg, #fffdf6, #ffffff);
+  border-radius: 14px;
+  border: 1px solid #eadfcb;
+  box-shadow:
+    0 18px 40px rgba(0,0,0,.12),
+    inset 0 1px 0 rgba(255,255,255,.85);
+  padding: 18px 18px 20px;
+  color: #4a3a2a;
+}
+
+/* 닫기 버튼 덜 튀게 + 고급 질감 */
+#resonance .extra .close{
+  background:#fff;
+  border:1px solid #eadfcb;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9);
+  border-radius:10px;
+  padding:4px 8px;
+}
+
+/* 상단 pill 탭 강화 */
+#resonance .switch{ gap:10px; margin: 0 0 10px; }
+#resonance .pill{
+  background:#fff;
+  border:1px solid #e7dbc6;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
+  padding:6px 12px; border-radius:999px; font-weight:700;
+}
+#resonance .pill[aria-pressed="true"]{
+  background: linear-gradient(180deg, #ffe8d6, #ffd9bf);
+  border-color:#f3b792; color:#47331f;
+}
+
+/* 본문 타이포 + 구성 요소 */
+#resonance .extra-body{
+  margin-top: 6px;
+  font-size:15px; line-height:1.75; color:#4a3a2a;
+}
+#resonance .extra-body .lead{
+  font-size:16px; font-weight:800; margin: 2px 0 10px;
+}
+#resonance .divider{ height:1px; background:#efe6d6; margin: 12px 0; }
+
+/* KPI 블록 */
+#resonance .kpis{
+  display:grid; grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px; margin:10px 0 4px;
+}
+#resonance .kpi{
+  background:#fff; border:1px solid #eee2cc; border-radius:12px; padding:10px;
+  text-align:center; box-shadow: inset 0 1px 0 rgba(255,255,255,.9);
+}
+#resonance .kpi .num{ font-weight:900; font-size:18px; }
+#resonance .kpi .unit{ font-size:12px; color:#7a6a56; }
+
+/* 체크리스트(프리미엄 체크) */
+#resonance .checklist{ list-style:none; padding:0; margin:10px 0; }
+#resonance .checklist li{
+  position:relative; padding-left:22px; margin:8px 0;
+}
+#resonance .checklist li::before{
+  content:"✓"; position:absolute; left:0; top:.2em;
+  width:16px; height:16px; display:grid; place-items:center;
+  font-size:11px; font-weight:900; color:#fff;
+  border-radius:50%;
+  background: linear-gradient(135deg,#f85826,#db3b09);
+  box-shadow:0 2px 6px rgba(248,88,38,.35);
+}
+
+/* 배지 / 노트 */
+#resonance .badge{
+  display:inline-block; padding:4px 8px; border-radius:999px;
+  background:#fff1e9; border:1px solid #ffd2c2; font-size:12px; font-weight:700;
+}
+#resonance .note{
+  background:#fffaf3; border:1px dashed #edd9bc;
+  border-radius:12px; padding:10px 12px; font-size:14px; margin-top:10px;
+}
+/* 오버레이 고급화 세트 */
+#resonance .extra{
+  background: linear-gradient(180deg, #fffdf6, #ffffff);
+  border-radius: 14px;
+  border: 1px solid #eadfcb;
+  box-shadow: 0 18px 40px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.85);
+  padding: 18px 18px 20px;
+  color: #4a3a2a;
+}
+#resonance .extra .close{
+  background:#fff; border:1px solid #eadfcb;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.9);
+  border-radius:10px; padding:4px 8px;
+}
+#resonance .switch{ gap:10px; margin:0 0 10px; }
+#resonance .pill{
+  background:#fff; border:1px solid #e7dbc6;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.8);
+  padding:6px 12px; border-radius:999px; font-weight:700;
+}
+#resonance .pill[aria-pressed="true"]{
+  background: linear-gradient(180deg, #ffe8d6, #ffd9bf);
+  border-color:#f3b792; color:#47331f;
+}
+#resonance .extra-body{ margin-top:6px; font-size:15px; line-height:1.75; color:#4a3a2a; }
+#resonance .extra-body .lead{ font-size:16px; font-weight:800; margin:2px 0 10px; }
+#resonance .divider{ height:1px; background:#efe6d6; margin:12px 0; }
+#resonance .kpis{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin:10px 0 4px; }
+#resonance .kpi{ background:#fff; border:1px solid #eee2cc; border-radius:12px; padding:10px; text-align:center; box-shadow: inset 0 1px 0 rgba(255,255,255,.9); }
+#resonance .kpi .num{ font-weight:900; font-size:18px; }
+#resonance .kpi .unit{ font-size:12px; color:#7a6a56; }
+#resonance .checklist{ list-style:none; padding:0; margin:10px 0; }
+#resonance .checklist li{ position:relative; padding-left:22px; margin:8px 0; }
+#resonance .checklist li::before{
+  content:"✓"; position:absolute; left:0; top:.2em; width:16px; height:16px; display:grid; place-items:center;
+  font-size:11px; font-weight:900; color:#fff; border-radius:50%;
+  background: linear-gradient(135deg,#f85826,#db3b09); box-shadow:0 2px 6px rgba(248,88,38,.35);
+}
+#resonance .badge{ display:inline-block; padding:4px 8px; border-radius:999px; background:#fff1e9; border:1px solid #ffd2c2; font-size:12px; font-weight:700; }
+#resonance .note{ background:#fffaf3; border:1px dashed #edd9bc; border-radius:12px; padding:10px 12px; font-size:14px; margin-top:10px; }
+
 
 
 
