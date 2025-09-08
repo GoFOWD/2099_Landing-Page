@@ -130,7 +130,7 @@ function updateSlides(index) {
 function calcIndex(progress) {
     let idx = Math.floor(progress * totalSlides);
     if (idx >= totalSlides) idx = totalSlides - 1;
-    if (progress > 0 && progress < 1) {
+    if (progress > 0) {
         subText.classList.add("active");
     } else {
         subText.classList.remove("active");
