@@ -22,3 +22,15 @@
 	opacity: 0;
 	transition: all 1s;
 }
+
+#header {
+	position: fixed;
+	width: 100%;
+	z-index: 1000;
+	background-color: #fff;
+}
+
+#main {
+	position: relative;
+	top: 58.6px;
+}
