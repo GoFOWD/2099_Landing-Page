@@ -1,0 +1,95 @@
+/* 오시는길 페이지 스타일 */
+.directions-section {
+    background: linear-gradient(135deg, #faf8f5, #f5f2ed);
+    padding: 4rem 0;
+    min-height: 100vh;
+}
+
+.directions-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.directions-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.directions-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #2c2c2c;
+    margin-bottom: 1rem;
+}
+
+.directions-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.map-container {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.map-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c2c2c;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+#map {
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+    border: 2px solid #e8e4e0;
+}
+
+.office-info {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.office-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c2c2c;
+    margin-bottom: 1.5rem;
+}
+
+.office-details {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.8;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .directions-container {
+        padding: 0 1rem;
+    }
+    
+    .directions-title {
+        font-size: 2rem;
+    }
+    
+    .map-container,
+    .office-info {
+        padding: 2rem;
+    }
+    
+    #map {
+        height: 400px;
+    }
+}

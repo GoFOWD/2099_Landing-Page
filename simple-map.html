@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간단한 지도</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        #map {
+            height: 400px;
+            width: 100%;
+            border: 2px solid #333;
+        }
+        .info {
+            background: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="info">
+        <h1>🗺️ 간단한 지도 테스트</h1>
+        <p>이 페이지는 가장 기본적인 Leaflet 지도입니다.</p>
+    </div>
+    
+    <div id="map"></div>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // 페이지 로드 완료 후 실행
+        window.onload = function() {
+            console.log('페이지 로드됨');
+            console.log('Leaflet 확인:', typeof L);
+            
+            if (typeof L === 'undefined') {
+                alert('Leaflet이 로드되지 않았습니다!');
+                return;
+            }
+            
+            try {
+                // 지도 생성
+                var map = L.map('map').setView([37.5665, 126.9780], 13);
+                console.log('지도 생성됨');
+                
+                // 타일 레이어 추가
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+                console.log('타일 레이어 추가됨');
+                
+                // 마커 추가
+                var marker = L.marker([37.5665, 126.9780]).addTo(map);
+                marker.bindPopup('서울 시청<br>테스트 성공!').openPopup();
+                console.log('마커 추가됨');
+                
+                console.log('지도 초기화 완료!');
+                
+            } catch (error) {
+                console.error('지도 생성 오류:', error);
+                document.getElementById('map').innerHTML = '<div style="padding: 50px; text-align: center; color: red;">지도 생성 오류: ' + error.message + '</div>';
+            }
+        };
+    </script>
+</body>
+</html>

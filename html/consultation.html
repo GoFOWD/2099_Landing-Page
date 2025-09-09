@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <title>상담신청 - 숏픽</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/necessity.css">
+    <link rel="stylesheet" href="../css/contactBtn.css">
+    <link rel="stylesheet" href="../css/freeTrial.css">
+</head>
+
+<body>
+    <header id="header"></header>
+    <main id="main">
+        <div id="consultation-content"></div>
+    </main>
+    <footer id="footer"></footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        async function fetchHTML(fileName, tagId) {
+            const response = await fetch(fileName);
+            const data = await response.text();
+            document.getElementById(tagId).innerHTML = data;
+        }
+
+        function loadScripts() {
+            const scripts = [
+                "../js/header.js"
+            ];
+
+            scripts.forEach(src => {
+                const script = document.createElement('script');
+                script.src = src;
+                document.body.appendChild(script);
+            });
+        }
+
+        // 모든 HTML을 순차적으로 로드한 후 스크립트 로드
+        async function loadAllHTML() {
+            await fetchHTML("header.html", "header");
+            await fetchHTML("footer.html", "footer");
+            
+            // 상담신청 콘텐츠를 직접 삽입
+            document.getElementById("consultation-content").innerHTML = `
+<style>
+    .consultation-section {
+        background: linear-gradient(135deg, #faf8f5, #f5f2ed);
+        padding: 4rem 0;
+        min-height: 100vh;
+    }
+    
+    .consultation-container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    
+    .consultation-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    
+    .consultation-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #2c2c2c;
+        margin-bottom: 1rem;
+    }
+    
+    .consultation-subtitle {
+        font-size: 1.2rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .consultation-form {
+        background: white;
+        border-radius: 20px;
+        padding: 3rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+    }
+    
+    .form-section {
+        margin-bottom: 2.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #2c2c2c;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #e8e4e0;
+    }
+    
+    .consultation-type {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .type-option {
+        position: relative;
+        cursor: pointer;
+    }
+    
+    .type-option input[type="radio"] {
+        display: none;
+    }
+    
+    .type-card {
+        background: #f8f6f3;
+        border: 2px solid #e8e4e0;
+        border-radius: 15px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+    
+    .type-option input[type="radio"]:checked + .type-card {
+        background: linear-gradient(135deg, #8B4513, #A0522D);
+        color: white;
+        border-color: #8B4513;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(139, 69, 19, 0.3);
+    }
+    
+    
+    .type-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+    
+    .type-desc {
+        font-size: 0.9rem;
+        opacity: 0.8;
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+        font-weight: 600;
+        color: #2c2c2c;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+    
+    .form-control {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 2px solid #e8e4e0;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+    }
+    
+    .form-control:focus {
+        outline: none;
+        border-color: #8B4513;
+        box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+    }
+    
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    
+    .form-textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+    
+    .date-time-group {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+    
+    .submit-btn {
+        background: linear-gradient(135deg, #8B4513, #A0522D);
+        color: white;
+        border: none;
+        padding: 1rem 3rem;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+        margin-top: 1rem;
+    }
+    
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(139, 69, 19, 0.3);
+    }
+    
+    .required {
+        color: #ff7042;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    /* CSS로 동적 UI 구현 - 라디오 버튼 선택에 따른 오프라인 섹션 표시 */
+    .consultation-form input[value="offline"]:checked ~ .offline-section {
+        display: block !important;
+    }
+    
+    .consultation-form input[value="online"]:checked ~ .offline-section {
+        display: none !important;
+    }
+    
+    .info-box {
+        background: linear-gradient(135deg, #f0ede8, #e8e4e0);
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        border-left: 4px solid #8B4513;
+    }
+    
+    .info-title {
+        font-weight: 600;
+        color: #2c2c2c;
+        margin-bottom: 0.5rem;
+    }
+    
+    .info-text {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    @media (max-width: 768px) {
+        .consultation-container {
+            padding: 0 1rem;
+        }
+        
+        .consultation-title {
+            font-size: 2rem;
+        }
+        
+        .consultation-form {
+            padding: 2rem;
+        }
+        
+        .consultation-type {
+            grid-template-columns: 1fr;
+        }
+        
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+        
+        .date-time-group {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<section class="consultation-section">
+    <div class="consultation-container">
+        <div class="consultation-header">
+            <h2 class="consultation-title">상담신청</h2>
+            <p class="consultation-subtitle">숏픽 전문가와 함께 맞춤형 마케팅 솔루션을 찾아보세요</p>
+        </div>
+        
+        <div class="info-box">
+            <div class="info-title">💡 상담 안내</div>
+            <div class="info-text">
+                • 온라인 상담: 화상회의를 통한 원격 상담 (30분)<br>
+                • 오프라인 상담: 숏픽 본사 방문 상담 (1시간)<br>
+                • 상담 신청 후 24시간 내 연락드립니다
+            </div>
+        </div>
+        
+        <form class="consultation-form" id="consultationForm" action="#" method="POST">
+            <!-- 상담 유형 선택 -->
+            <div class="form-section">
+                <h3 class="section-title">상담 유형 선택</h3>
+                <div class="consultation-type">
+                    <label class="type-option">
+                        <input type="radio" name="consultationType" value="online" checked>
+                        <div class="type-card">
+                            <div class="type-name">온라인 상담</div>
+                            <div class="type-desc">화상회의로 편리하게</div>
+                        </div>
+                    </label>
+                    <label class="type-option">
+                        <input type="radio" name="consultationType" value="offline">
+                        <div class="type-card">
+                            <div class="type-name">오프라인 상담</div>
+                            <div class="type-desc">본사 방문으로 깊이 있게</div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- 기업/브랜드 정보 -->
+            <div class="form-section">
+                <h3 class="section-title">기업/브랜드 정보</h3>
+                <div class="form-group">
+                    <label class="form-label">회사명/브랜드명 <span class="required">*</span></label>
+                    <input type="text" class="form-control" name="companyName" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">업종</label>
+                    <select class="form-control" name="industry">
+                        <option value="">업종을 선택해주세요</option>
+                        <option value="restaurant">식당/카페</option>
+                        <option value="retail">소매업</option>
+                        <option value="service">서비스업</option>
+                        <option value="manufacturing">제조업</option>
+                        <option value="ecommerce">이커머스</option>
+                        <option value="other">기타</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">사업자등록번호</label>
+                    <input type="text" class="form-control" name="businessNumber" placeholder="000-00-00000">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">홈페이지/SNS</label>
+                    <input type="url" class="form-control" name="website" placeholder="https://">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">상담하고 싶은 내용</label>
+                    <textarea class="form-control form-textarea" name="consultationContent" placeholder="어떤 부분에 대해 상담받고 싶으신지 자세히 적어주세요"></textarea>
+                </div>
+            </div>
+            
+            <!-- 개인정보 -->
+            <div class="form-section">
+                <h3 class="section-title">개인정보</h3>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">이름 <span class="required">*</span></label>
+                        <input type="text" class="form-control" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">직책</label>
+                        <input type="text" class="form-control" name="position" placeholder="대표, 마케팅팀장 등">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">이메일 <span class="required">*</span></label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">전화번호 <span class="required">*</span></label>
+                        <input type="tel" class="form-control" name="phone" required placeholder="010-0000-0000">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 오프라인 상담 날짜/시간 (오프라인 선택 시에만 표시) -->
+            <div class="form-section offline-section hidden">
+                <h3 class="section-title">방문 날짜 및 시간</h3>
+                <div class="date-time-group">
+                    <div class="form-group">
+                        <label class="form-label">희망 날짜 <span class="required">*</span></label>
+                        <input type="date" class="form-control" name="visitDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">희망 시간 <span class="required">*</span></label>
+                        <select class="form-control" name="visitTime" required>
+                            <option value="">시간을 선택해주세요</option>
+                            <option value="09:00">오전 9시</option>
+                            <option value="10:00">오전 10시</option>
+                            <option value="11:00">오전 11시</option>
+                            <option value="14:00">오후 2시</option>
+                            <option value="15:00">오후 3시</option>
+                            <option value="16:00">오후 4시</option>
+                            <option value="17:00">오후 5시</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <div class="info-title">📍 오프라인 상담 장소</div>
+                    <div class="info-text">
+                        숏픽 본사: 서울시 강남구 테헤란로 123, 숏픽빌딩 10층<br>
+                        지하철 2호선 강남역 3번 출구에서 도보 5분
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-btn">상담신청하기</button>
+        </form>
+    </div>
+</section>
+
+            `;
+            
+            // 모든 HTML 로딩 완료 후 스크립트 실행
+            loadScripts();
+        }
+
+        // 실행
+        loadAllHTML();
+    </script>
+</body>
+
+</html>

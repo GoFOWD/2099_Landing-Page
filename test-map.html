@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지도 테스트</title>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        #map {
+            height: 500px;
+            width: 100%;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+        .test-info {
+            background: #f0f0f0;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-info">
+        <h1>🗺️ 지도 테스트 페이지</h1>
+        <p>이 페이지는 Leaflet 지도가 제대로 작동하는지 테스트합니다.</p>
+        <p>지도가 아래에 표시되어야 합니다.</p>
+    </div>
+    
+    <div id="map"></div>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        console.log('페이지 로드됨');
+        console.log('Leaflet 확인:', typeof L);
+        
+        // 지도 초기화
+        function initMap() {
+            console.log('지도 초기화 시작');
+            
+            // 서울 중심 좌표
+            const center = [37.5665, 126.9780];
+            
+            // 지도 생성
+            const map = L.map('map').setView(center, 13);
+            console.log('지도 생성됨');
+            
+            // 타일 레이어 추가 (CartoDB 사용)
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+                maxZoom: 19,
+                attribution: '© OpenStreetMap contributors © CartoDB',
+                subdomains: 'abcd',
+                r: '@2x'
+            }).addTo(map);
+            console.log('타일 레이어 추가됨');
+            
+            // 마커 추가
+            const marker = L.marker(center).addTo(map);
+            marker.bindPopup('서울 시청<br>테스트 마커입니다').openPopup();
+            console.log('마커 추가됨');
+            
+            console.log('지도 초기화 완료');
+        }
+        
+        // 페이지 로드 후 지도 초기화
+        window.addEventListener('load', function() {
+            console.log('페이지 완전 로드됨');
+            console.log('Leaflet 확인:', typeof L);
+            
+            if (typeof L !== 'undefined') {
+                console.log('Leaflet 사용 가능');
+                initMap();
+            } else {
+                console.error('Leaflet을 찾을 수 없습니다');
+                document.getElementById('map').innerHTML = '<div style="padding: 50px; text-align: center; color: red;">Leaflet 라이브러리를 로드할 수 없습니다</div>';
+            }
+        });
+    </script>
+</body>
+</html>
