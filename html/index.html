@@ -15,8 +15,8 @@
 
 <body>
     <header id="header">
-
     </header>
+    <div id="modal-container"></div>
     <main id="main">
         <div id="freeTrial"></div>
         <div id="necessity"></div>
@@ -55,6 +55,7 @@
         // 모든 HTML을 순차적으로 로드한 후 스크립트 로드
         async function loadAllHTML() {
             await fetchHTML("header.html", "header");
+            await fetchHTML("modalContainer.html", "modal-container");
             await fetchHTML("freeTrial.html", "freeTrial");
             await fetchHTML("necessity.html", "necessity");
             await fetchHTML("bond.html", "bond");
