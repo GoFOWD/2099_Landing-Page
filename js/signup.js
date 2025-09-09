@@ -11,15 +11,33 @@ const checkEmailMsg = document.querySelector('#checkEmail-message');
 const checkDupBtn = document.querySelector('#dupBtn');
 const canUseMsg = document.querySelector('#canUseMsg');
 const isdupMsg = document.querySelector('#isdupMsg');
+const notMsg = document.querySelector('#notMsg');
 
 // 이메일 중복 확인
 // 이메일이 중복 되면 중복된 메일이라고 메세지
 // 이메일 중복 검사 안하고 회원가입 버튼 누르면 중복 체크 하라고 메세지
 let isCheckedDup = false;
 
-checkDupBtn.addEventListener("click", () => {
+checkDupBtn.addEventListener("click", (event) => {
+	event.preventDefault();
 	// 유저 정보 불러오기
 	const users = JSON.parse(localStorage.getItem("users"));
+
+	// 만약 이메일 입력 안하고 누르면 입력하라는 메세지
+	if (!userEmailInput.value) {
+		notMsg.classList.remove('d-none')
+		notMsg.classList.add("wrong-animation");
+		notMsg.addEventListener(
+			"animationend",
+			() => {
+				patternHelp.classList.remove("wrong-animation");
+			},
+			{ once: true }
+		);
+		return;
+	} else {
+		notMsg.classList.add('d-none')
+	}
 
 	// 만약 저장된 유저 없다면 바로 합격
 	if (!users) {
