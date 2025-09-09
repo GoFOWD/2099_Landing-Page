@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <title>숏픽 팀 - 우리를 소개합니다</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/necessity.css">
+    <link rel="stylesheet" href="../css/contactBtn.css">
+    <link rel="stylesheet" href="../css/freeTrial.css">
+</head>
+
+<body>
+    <header id="header"></header>
+    <main id="main">
+        <div id="team-content"></div>
+    </main>
+    <footer id="footer"></footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        async function fetchHTML(fileName, tagId) {
+            const response = await fetch(fileName);
+            const data = await response.text();
+            document.getElementById(tagId).innerHTML = data;
+        }
+
+        function loadScripts() {
+            const scripts = [
+                "../js/header.js"
+            ];
+
+            scripts.forEach(src => {
+                const script = document.createElement('script');
+                script.src = src;
+                document.body.appendChild(script);
+            });
+        }
+
+        // 모든 HTML을 순차적으로 로드한 후 스크립트 로드
+        async function loadAllHTML() {
+            await fetchHTML("header.html", "header");
+            await fetchHTML("footer.html", "footer");
+            
+            // 팀 콘텐츠를 직접 삽입
+            document.getElementById("team-content").innerHTML = `
+<style>
+    .team-section {
+        background: linear-gradient(135deg, #faf8f5, #f5f2ed);
+        padding: 4rem 0;
+        min-height: 100vh;
+    }
+    
+    .team-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    
+    .team-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+    
+    .team-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #2c2c2c;
+        margin-bottom: 1rem;
+    }
+    
+    .team-subtitle {
+        font-size: 1.2rem;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 4rem;
+    }
+    
+    .team-card {
+        background: white;
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 2px solid transparent;
+    }
+    
+    .team-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        border-color: #8B4513;
+    }
+    
+    .team-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        margin: 0 auto 1.5rem;
+        background: linear-gradient(135deg, #8B4513, #A0522D);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: white;
+        font-weight: bold;
+    }
+    
+    .team-name {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #2c2c2c;
+        margin-bottom: 0.5rem;
+    }
+    
+    .team-role {
+        font-size: 1rem;
+        color: #8B4513;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    
+    .team-desc {
+        font-size: 0.95rem;
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+    
+    .team-skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+    
+    .skill-tag {
+        background: linear-gradient(135deg, #f0ede8, #e8e4e0);
+        color: #8B4513;
+        padding: 0.3rem 0.8rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    
+    .welfare-section {
+        background: white;
+        border-radius: 20px;
+        padding: 3rem;
+        margin-top: 3rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    
+    .welfare-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #2c2c2c;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    .welfare-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+    
+    .welfare-item {
+        text-align: center;
+        padding: 1.5rem;
+        background: linear-gradient(135deg, #f8f6f3, #f0ede8);
+        border-radius: 15px;
+        border: 2px solid #e8e4e0;
+        transition: transform 0.3s ease;
+    }
+    
+    .welfare-item:hover {
+        transform: translateY(-3px);
+    }
+    
+    .welfare-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .welfare-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #2c2c2c;
+        margin-bottom: 0.8rem;
+    }
+    
+    .welfare-desc {
+        font-size: 0.95rem;
+        color: #666;
+        line-height: 1.5;
+    }
+    
+    .mission-section {
+        background: linear-gradient(135deg, #8B4513, #A0522D);
+        color: white;
+        border-radius: 20px;
+        padding: 3rem;
+        margin-top: 3rem;
+        text-align: center;
+    }
+    
+    .mission-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+    }
+    
+    .mission-text {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    
+    @media (max-width: 768px) {
+        .team-title {
+            font-size: 2rem;
+        }
+        
+        .team-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .team-container {
+            padding: 0 1rem;
+        }
+        
+        .welfare-grid {
+            grid-template-columns: 1fr;
+        }
+        
+        .welfare-section {
+            padding: 2rem;
+        }
+        
+        .mission-section {
+            padding: 2rem;
+        }
+    }
+</style>
+
+<section class="team-section">
+    <div class="team-container">
+        <div class="team-header">
+            <h2 class="team-title">숏픽 팀</h2>
+            <p class="team-subtitle">자영업자들의 마케팅 성공을 위해 함께하는 5명의 팀원들을 소개합니다</p>
+        </div>
+        
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-avatar">서</div>
+                <h3 class="team-name">서현준</h3>
+                <p class="team-role">CEO & 개발자</p>
+                <div class="team-skills">
+                    <span class="skill-tag">AI/ML</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">비전리더십</span>
+                </div>
+            </div>
+            
+            <div class="team-card">
+                <div class="team-avatar">윤</div>
+                <h3 class="team-name">윤재하</h3>
+                <p class="team-role">개발자</p>
+                <div class="team-skills">
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">데이터베이스</span>
+                </div>
+            </div>
+            
+            <div class="team-card">
+                <div class="team-avatar">김</div>
+                <h3 class="team-name">김태훈</h3>
+                <p class="team-role">개발자</p>
+                <div class="team-skills">
+                    <span class="skill-tag">UI/UX</span>
+                    <span class="skill-tag">Figma</span>
+                    <span class="skill-tag">프로토타이핑</span>
+                </div>
+            </div>
+            
+            <div class="team-card">
+                <div class="team-avatar">진</div>
+                <h3 class="team-name">진선우</h3>
+                <p class="team-role">개발자</p>
+                <div class="team-skills">
+                    <span class="skill-tag">디지털마케팅</span>
+                    <span class="skill-tag">데이터분석</span>
+                    <span class="skill-tag">브랜딩</span>
+                </div>
+            </div>
+            
+            <div class="team-card">
+                <div class="team-avatar">산</div>
+                <h3 class="team-name">신연지</h3>
+                <p class="team-role">개발자</p>
+                <div class="team-skills">
+                    <span class="skill-tag">고객지원</span>
+                    <span class="skill-tag">교육</span>
+                    <span class="skill-tag">커뮤니케이션</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="welfare-section">
+            <h3 class="welfare-title">🏢 숏픽의 복지 혜택</h3>
+            <div class="welfare-grid">
+                <div class="welfare-item">
+                    <div class="welfare-icon">💰</div>
+                    <div class="welfare-name">경쟁력 있는 연봉</div>
+                    <div class="welfare-desc">업계 최고 수준의 연봉과 성과급 제도로 동기부여를 제공합니다</div>
+                </div>
+                <div class="welfare-item">
+                    <div class="welfare-icon">🏖️</div>
+                    <div class="welfare-name">유연한 근무</div>
+                    <div class="welfare-desc">재택근무, 자율출퇴근, 무제한 휴가로 워라밸을 보장합니다</div>
+                </div>
+                <div class="welfare-item">
+                    <div class="welfare-icon">📚</div>
+                    <div class="welfare-name">교육 지원</div>
+                    <div class="welfare-desc">개인 성장을 위한 교육비 전액 지원 및 컨퍼런스 참가 기회를 제공합니다</div>
+                </div>
+                <div class="welfare-item">
+                    <div class="welfare-icon">🍽️</div>
+                    <div class="welfare-name">식사 지원</div>
+                    <div class="welfare-desc">점심 식사비 전액 지원과 간식, 음료를 무제한 제공합니다</div>
+                </div>
+                <div class="welfare-item">
+                    <div class="welfare-icon">🏥</div>
+                    <div class="welfare-name">건강 관리</div>
+                    <div class="welfare-desc">건강검진, 헬스장 이용료, 의료비 지원으로 직원 건강을 챙깁니다</div>
+                </div>
+                <div class="welfare-item">
+                    <div class="welfare-icon">🎯</div>
+                    <div class="welfare-name">주식 옵션</div>
+                    <div class="welfare-desc">회사 성장에 따른 주식 옵션을 제공하여 함께 성장할 수 있는 기회를 제공합니다</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mission-section">
+            <h3 class="mission-title">🚀 우리의 미션</h3>
+            <p class="mission-text">
+                "모든 자영업자가 쉽고 빠르게 마케팅할 수 있는 세상을 만든다"<br>
+                AI 기술과 전문가의 노하우를 결합하여 자영업자들의 마케팅 어려움을 해결하고, 
+                그들의 꿈과 비전이 현실이 될 수 있도록 돕는 것이 숏픽 팀의 사명입니다.
+            </p>
+        </div>
+    </div>
+</section>
+            `;
+            
+            // 모든 HTML 로딩 완료 후 스크립트 실행
+            loadScripts();
+        }
+
+        // 실행
+        loadAllHTML();
+    </script>
+</body>
+
+</html>
