@@ -1,11 +1,61 @@
 const signup = document.querySelector("#signup-container");
 const welcome = document.querySelector("#welcome-container");
 const signupForm = document.querySelector("#signup-form");
+const userEmailInput = document.querySelector('#user-email');
 const userPasswordInput = document.querySelector("#user-password");
 const userPasswordInputCheck = document.querySelector("#user-password-check");
 const signUpBtn = document.querySelector("#signup-btn");
 const patternHelp = document.querySelector("#pattern-help");
 const wrongMessage = document.querySelector("#wrong-message");
+const checkEmailMsg = document.querySelector('#checkEmail-message');
+const checkDupBtn = document.querySelector('#dupBtn');
+const canUseMsg = document.querySelector('#canUseMsg');
+const isdupMsg = document.querySelector('#isdupMsg');
+
+// 이메일 중복 확인
+// 이메일이 중복 되면 중복된 메일이라고 메세지
+// 이메일 중복 검사 안하고 회원가입 버튼 누르면 중복 체크 하라고 메세지
+let isCheckedDup = false;
+
+checkDupBtn.addEventListener("click", () => {
+	// 유저 정보 불러오기
+	const users = JSON.parse(localStorage.getItem("users"));
+
+	// 만약 저장된 유저 없다면 바로 합격
+	if (!users) {
+		isCheckedDup = true;
+		canUseMsg.classList.remove('d-none');
+		isdupMsg.classList.add('d-none');
+		return;
+	} 
+
+	//  저장된 유저가 있다면 유저 정보 하나씩 순회해서 이메일값 비교
+	//  만약 이미 있는 이메일이라면 불합격
+	const canUseEmail = users.every(user => user.userEmail !== userEmailInput.value);
+	
+	if (canUseEmail) {
+		isCheckedDup = true;
+		canUseMsg.classList.remove('d-none');
+		isdupMsg.classList.add('d-none');
+		return;
+	} else {
+		isCheckedDup = false;
+		canUseMsg.classList.add('d-none');
+		isdupMsg.classList.remove('d-none');
+		isdupMsg.classList.add("wrong-animation");
+		isdupMsg.addEventListener(
+			"animationend",
+			() => {
+				patternHelp.classList.remove("wrong-animation");
+			},
+			{ once: true }
+		);
+	}
+});
+
+
+
+
 
 // submit되면 회원가임 검증
 signupForm.addEventListener("submit", event => {
@@ -45,6 +95,14 @@ signupForm.addEventListener("submit", event => {
 		return; // 비밀번호 불일치시 함수 종료
 	} else {
 		wrongMessage.classList.add("d-none");
+	}
+
+	// 이메일 중복 검사 여부 체크
+	if (!isCheckedDup) {
+		checkEmailMsg.classList.remove('d-none');
+		return;
+	} else {
+		checkEmailMsg.classList.add('d-none');
 	}
 
 	// 검증 통화 하면 아래 로직 실행

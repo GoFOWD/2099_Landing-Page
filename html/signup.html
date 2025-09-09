@@ -28,6 +28,11 @@
 					id="user-email"
 					placeholder="name@example.com"
 					required />
+				<div class="d-flex mt-2">
+					<button id="dupBtn" class="btn btn-light text-light-emphasis mx-2">중복 확인</button>
+					<p id="isdupMsg" class="text-danger mx-2 mb-0 d-flex align-items-center d-none">가입된 이메일 입니다</p>	
+					<p id="canUseMsg" class="text-primary mx-2 mb-0 d-flex align-items-center d-none">사용 가능한 이메일 입니다</p>
+				</div>
 
 				<label for="user-password" class="form-label">비밀번호</label>
 				<input
@@ -49,6 +54,10 @@
 					required />
 				<div id="wrong-message" class="mt-3 text-danger d-none">
 					비밀번호가 일치 하지 않습니다
+				</div>
+
+				<div id="checkEmail-message" class="mt-3 text-danger d-none">
+					이메일 중복 확인을 해주세요
 				</div>
 
 				<button
