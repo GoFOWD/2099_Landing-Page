@@ -12,20 +12,25 @@ const checkDupBtn = document.querySelector('#dupBtn');
 const canUseMsg = document.querySelector('#canUseMsg');
 const isdupMsg = document.querySelector('#isdupMsg');
 const notMsg = document.querySelector('#notMsg');
+const EmailIsDup = document.querySelector('#EmailIsDup')
 
 // 이메일 중복 확인
 // 이메일이 중복 되면 중복된 메일이라고 메세지
 // 이메일 중복 검사 안하고 회원가입 버튼 누르면 중복 체크 하라고 메세지
 let isCheckedDup = false;
+let isEmailDup;
 
 checkDupBtn.addEventListener("click", (event) => {
 	event.preventDefault();
 	// 유저 정보 불러오기
 	const users = JSON.parse(localStorage.getItem("users"));
 
+	// 증복 확인 버튼 누르면 일단 하단 메세지 없애기
+	checkEmailMsg.classList.add('d-none');
+
 	// 만약 이메일 입력 안하고 누르면 입력하라는 메세지
 	if (!userEmailInput.value) {
-		notMsg.classList.remove('d-none')
+		notMsg.classList.remove('d-none');
 		notMsg.classList.add("wrong-animation");
 		notMsg.addEventListener(
 			"animationend",
@@ -42,6 +47,7 @@ checkDupBtn.addEventListener("click", (event) => {
 	// 만약 저장된 유저 없다면 바로 합격
 	if (!users) {
 		isCheckedDup = true;
+		isEmailDup = false
 		canUseMsg.classList.remove('d-none');
 		isdupMsg.classList.add('d-none');
 		return;
@@ -53,26 +59,25 @@ checkDupBtn.addEventListener("click", (event) => {
 	
 	if (canUseEmail) {
 		isCheckedDup = true;
+		isEmailDup = false
 		canUseMsg.classList.remove('d-none');
 		isdupMsg.classList.add('d-none');
 		return;
 	} else {
 		isCheckedDup = false;
+		isEmailDup = true;
 		canUseMsg.classList.add('d-none');
 		isdupMsg.classList.remove('d-none');
 		isdupMsg.classList.add("wrong-animation");
 		isdupMsg.addEventListener(
 			"animationend",
 			() => {
-				patternHelp.classList.remove("wrong-animation");
+				isdupMsg.classList.remove("wrong-animation");
 			},
 			{ once: true }
 		);
 	}
 });
-
-
-
 
 
 // submit되면 회원가임 검증
@@ -123,8 +128,20 @@ signupForm.addEventListener("submit", event => {
 		checkEmailMsg.classList.add('d-none');
 	}
 
-	// 검증 통화 하면 아래 로직 실행
+	// 이메일 중복 여부 체크
+	if (isEmailDup) {
+		EmailIsDup.classList.remove('d-none');
+		EmailIsDup.classList.add("wrong-animation");
+		EmailIsDup.addEventListener(
+			"animationend",
+			() => {
+				EmailIsDup.classList.remove("wrong-animation");
+			},
+			{ once: true }
+		)
+	}
 
+	// 검증 통화 하면 아래 로직 실행
 	// 환영 페이지 등장
 	signup.classList.add("d-none");
 	welcome.classList.remove("d-none");
