@@ -93,13 +93,19 @@
         padding: 60px;
     }
 
+    /* 메인 컨텐츠 */
+    .nStichyBody {
+        height: 400dvh;
+        margin-top: 35vh;
+    }
+
     #necessity .card-title {
         font-size: 50px;
         font-weight: 700;
     }
 
     #necessity #resonance-title {
-        font-size: 50px;
+        font-size: 70px;
     }
 
     #necessity #resonance-sub {
@@ -235,7 +241,7 @@
     border: 1px groove #A1A1A1;
     /* 두께 2px, 진한 회색 */
     /* 모서리를 둥글게 */
-    
+
     box-shadow: 5px 5px 2px rgba(32, 32, 32, 0.3);
 }
 
